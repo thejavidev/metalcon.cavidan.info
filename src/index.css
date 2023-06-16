@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+img{
+    border-style: none;
+    vertical-align: middle;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: auto;
+    width: auto;
+}
+
+.breadcump::before{
+    content: "";
+    background: rgba(49, 105, 150, 0.95);
+    height: 100%;
+    width: 100%;
+    mix-blend-mode: multiply;
+    position: absolute;
+}
+.sliderItem::before{
+    content: "";
+    background: rgba(49, 105, 150, 0.95);
+    height: 100%;
+    width: 100%;
+    mix-blend-mode: multiply;
+    position: absolute;
+}
+.sliderItem h1{
+    color: #fff;
+    font-size: 40px;
+    
+    text-align: center;
+}
+.sliderItem p{
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}

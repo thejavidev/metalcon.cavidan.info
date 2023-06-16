@@ -3,7 +3,7 @@ import Layout from "./components/layout/Layout"
 import Router from "./components/router/Router"
 import { useEffect } from "react";
 import { loadposts } from "./components/store/posts";
-
+import "swiper/css";
 function App() {
 
   const dispatch =useDispatch();
@@ -13,12 +13,12 @@ function App() {
     dispatch(loadposts())
   },[dispatch])
 
-  console.log(data)
+
 
   return (
     <>
       <Layout >
-        <Router />
+        <Router data={data} />
       </Layout>
     </>
   )

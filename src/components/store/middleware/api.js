@@ -24,14 +24,14 @@ const api =
                 body,
                 data,
             });
-            console.clear();
+            // console.clear();
             // General
             dispatch(actions.apiCallSucess(response.data));
             // Specific
             if (onSuccess)
                 dispatch({ type: onSuccess, payload: response.data });
         } catch (error) {
-            console.clear();
+            // console.clear();
             // General
             dispatch(actions.apiCallFailed(error.message));
             // Specific

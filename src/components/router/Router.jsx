@@ -7,12 +7,12 @@ import ProjectsSingle from "../../pages/ProjectsSingle";
 import Certificate from "../../pages/Certificate";
 import Contact from "../../pages/Contact";
 
-const Router =()=>{
+const Router =({data})=>{
     const minirouter =[
         {
             path:'/',
-            elemenet:<Home />,
-            exact:true,
+            element:<Home data={data}  />,
+            exact : true
         },
         {
             path:'/about',
