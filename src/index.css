@@ -41,3 +41,43 @@ img{
     padding: 30px 0;
     text-align: center;
 }
+.services:nth-child(1){
+    background: #10446B;
+}
+.services:nth-child(2){
+    background: #0F3E60;
+}
+.services:nth-child(3){
+    background: #10446B;
+}
+.services:nth-child(4){
+    background: #124A72;
+}
+.services{
+    transition: all .3s linear;
+    overflow: hidden;
+}
+.services::before{
+    content: "";
+    background: linear-gradient(180deg, #4A9CC2 0%, #124972 128.6%);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 0.3s linear;
+    transform: scaleY(0) scaleX(0) rotate(0deg);
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+}
+.services:hover::before{
+    transform: scaleX(1) scaleY(1) rotate(360deg);
+    opacity: 1;
+}
+.services:hover .current{
+    display: none;
+}
+.services:hover .onhover{
+    display: block;
+}
