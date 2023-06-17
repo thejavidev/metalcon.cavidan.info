@@ -13,10 +13,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
+import { line } from '../assets';
+import { Button } from 'bootstrap';
 
 const Home = ({ data }) => {
   const homebanner = data?.homebanner;
   const services = data?.services;
+  const options =data?.about;
   return (
     <>
       <m.div
@@ -84,6 +87,30 @@ const Home = ({ data }) => {
           </Swiper>
         </section>
 
+        <section id="about" className='pt-[50px] pb-[50px] h-[100vh]'>
+          <Container>
+            <div className="w-full flex justify-end items-end  ">
+              <h2 className='text-[35px] font-bold text-[#3498db]'>Dəmirin <span className='text-[#000]'>Gücü</span></h2>
+            </div>
+            <div className="w-full flex items-center mb-[30px]">
+              <LazyLoadImage src={line} className='h-[2px] mr-[20px]' />
+              <h2 className='text-[20px] font-bold text-[#3498db]'>METALCON <span className='text-[#000]'>HAQQINDA</span></h2>
+            </div>
+            <Row className='items-center'>
+              <Col lg={6}>
+                <LazyLoadImage src={options?.src} />
+              </Col>
+              <Col lg={6} className='flex items-center  flex-col'>
+                <div className="w-full" dangerouslySetInnerHTML={{ __html: options?.text_az }}></div>
+                <Link to={`/about`} className='w-full justify-end items-end flex mt-[10px]'>
+                    <button  className=' border-1 border-black pt-[10px] pb-[10px] pl-[20px] pr-[20px]'>
+                    Etrafli
+                    </button>
+                </Link>
+              </Col>
+            </Row>
+          </Container>
+        </section>
       </m.div>
     </>
   )
