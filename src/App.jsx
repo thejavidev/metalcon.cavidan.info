@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      <Layout >
+      <Layout data={data}>
         <Router data={data} />
       </Layout>
     </>

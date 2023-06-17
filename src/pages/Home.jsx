@@ -7,19 +7,18 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { EffectFade, Autoplay, Pagination } from "swiper";
 import { AiOutlineRight } from 'react-icons/ai';
-
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 import { line } from '../assets';
-import { Button } from 'bootstrap';
 
 const Home = ({ data }) => {
   const homebanner = data?.homebanner;
   const services = data?.services;
-  const options =data?.about;
+  const options = data?.about;
+  const spesfics = data?.spesfics;
+  const projects=data?.projects;
   return (
     <>
       <m.div
@@ -64,7 +63,7 @@ const Home = ({ data }) => {
             {
               services && services?.map((cur, i) => (
                 <SwiperSlide key={i} className='services p-[30px] h-[280px] relative'>
-                  <Link to={`/services/${cur?.slug}`}>
+                
                     <div className="flex justify-between items-center flex-col h-full w-full">
                       <div className="">
                         <LazyLoadImage src={cur?.cover} className='w-full h-[70px] current' />
@@ -78,7 +77,7 @@ const Home = ({ data }) => {
                         <AiOutlineRight className='text-[#fff]  ' />
                       </Link>
                     </div>
-                  </Link>
+                 
                 </SwiperSlide>
               ))
             }
@@ -87,27 +86,78 @@ const Home = ({ data }) => {
           </Swiper>
         </section>
 
-        <section id="about" className='pt-[50px] pb-[50px] h-[100vh]'>
+        <section id="about" className='pt-[50px] pb-[50px] '>
           <Container>
             <div className="w-full flex justify-end items-end  ">
               <h2 className='text-[35px] font-bold text-[#3498db]'>Dəmirin <span className='text-[#000]'>Gücü</span></h2>
             </div>
             <div className="w-full flex items-center mb-[30px]">
               <LazyLoadImage src={line} className='h-[2px] mr-[20px]' />
-              <h2 className='text-[20px] font-bold text-[#3498db]'>METALCON <span className='text-[#000]'>HAQQINDA</span></h2>
+              <h2 className='text-[20px] font-bold text-[#3498db] uppercase'>METALCON <span className='text-[#000]'>HAQQINDA</span></h2>
             </div>
             <Row className='items-center'>
               <Col lg={6}>
                 <LazyLoadImage src={options?.src} />
               </Col>
               <Col lg={6} className='flex items-center  flex-col'>
-                <div className="w-full" dangerouslySetInnerHTML={{ __html: options?.text_az }}></div>
+                <div className="w-full text-justify" dangerouslySetInnerHTML={{ __html: options?.text_az }}></div>
                 <Link to={`/about`} className='w-full justify-end items-end flex mt-[10px]'>
-                    <button  className=' border-1 border-black pt-[10px] pb-[10px] pl-[20px] pr-[20px]'>
+                  <div className=' border-1 border-black pt-[10px] pb-[10px] pl-[20px] pr-[20px]'>
                     Etrafli
-                    </button>
+                  </div>
                 </Link>
               </Col>
+            </Row>
+          </Container>
+        </section>
+        <section id="spesfics" className='pt-[50px] pb-[50px] bg-[#F0EFEF]'>
+          <Container>
+
+            <div className="w-full flex items-center mb-[30px]">
+              <LazyLoadImage src={line} className='h-[2px] mr-[20px]' />
+              <h2 className='text-[20px] font-bold text-[#000] uppercase'>XÜSUSİYYƏTLƏR </h2>
+            </div>
+            <Row className=''>
+              {
+                spesfics && spesfics?.map((cur, i) => (
+                  <Col lg={6} key={i} className='p-[30px] flex items-center spesfics'>
+                    <div className="flex p-[30px]">
+                      <div>
+                        <LazyLoadImage src={cur?.cover} className='current' />
+                        <LazyLoadImage src={cur?.cover_hover} className='onhover hidden' />
+                      </div>
+                      <div className="flex flex-col pl-[30px]">
+                        <h2 className='text-[25px] font-[600] text-[#00] '>{cur?.name_az}</h2>
+                        <div className='mt-[20px] text-justify' dangerouslySetInnerHTML={{ __html: cur?.text_az }}></div>
+                      </div>
+                    </div>
+                  </Col>
+                ))
+              }
+
+
+            </Row>
+          </Container>
+        </section>
+        <section id="projects" className='pt-[50px] pb-[50px] '>
+          <Container>
+            <div className="w-full flex items-center mb-[30px]">
+              <LazyLoadImage src={line} className='h-[2px] mr-[20px]' />
+              <h2 className='text-[20px] font-bold text-[#000] uppercase'>LAYİHƏLƏRİMİZ </h2>
+            </div>
+            <Row className=''>
+              {
+                projects && projects?.map((cur, i) => (
+                  <Col lg={3} key={i} className=' flex items-center   p-[10px]'>
+                    <Link to={`/projects/${cur?.slug}`} className="w-full overflow-hidden relative project_box ">
+                      <LazyLoadImage src={cur?.cover} className='w-full' />
+                      <div className="text absolute opacity-[0] bottom-[-100px] w-full border-t-[1px] border-t-[#4A9CC2] pt-[10px] pb-[10px] pl-[20px] pr-[20px] z-30 transition">
+                        <h3 className='text-[#fff] font-[400]'>{cur?.name_az}</h3>
+                      </div>
+                    </Link>
+                  </Col>
+                ))
+              }
             </Row>
           </Container>
         </section>

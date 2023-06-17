@@ -1,7 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+:root{
+    --rgba1:rgba(0, 62, 101, 0.89);
+    --rgba2:rgba(0, 0, 0, 0.89);
+}
 ::-webkit-scrollbar{
     width: 8px;
 }
@@ -80,4 +83,51 @@ img{
 }
 .services:hover .onhover{
     display: block;
+}
+.spesfics{
+    transition: all .3s linear;
+}
+.spesfics:hover{
+    background: #124972 ;
+}
+.spesfics:hover *{
+    color: #fff;
+}
+.spesfics:hover .current{
+    display: none;
+}
+.spesfics:hover .onhover{
+    display: block;
+}
+.transition{
+    transition: all 0.6s ease;
+}
+.project_box::before{
+    content: "";
+    background: rgba(49, 105, 150, 0.95);
+    height: 100%;
+    width: 100%;
+    mix-blend-mode: multiply;
+    position: absolute;
+    transition: all 0.4s linear;
+    transform: scaleY(0) scaleX(0);
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    opacity: 0;
+}
+.project_box:hover::before{
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+}
+.project_box:hover .text{
+    bottom: 0;
+    opacity: 1;
+}
+.footer_bg{
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
 }
