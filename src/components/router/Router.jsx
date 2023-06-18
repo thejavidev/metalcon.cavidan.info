@@ -15,28 +15,28 @@ const Router =({data})=>{
             exact : true
         },
         {
-            path:'/about',
-            elemenet:<About />
+            path:'about',
+            element:<About data={data} />
         },
         {
             path:'/services',
-            elemenet:<Services />
+            element:<Services />
         },
         {
             path:'/projects',
-            elemenet:<Projects />
+            element:<Projects />
         },
         {
             path:'/projects/:slug',
-            elemenet:<ProjectsSingle />
+            element:<ProjectsSingle />
         },
         {
             path:'/certificate',
-            elemenet:<Certificate />
+            element:<Certificate />
         },
         {
             path:'/contact',
-            elemenet:<Contact />
+            element:<Contact />
         }
     ]
     const route = useRoutes(minirouter)
