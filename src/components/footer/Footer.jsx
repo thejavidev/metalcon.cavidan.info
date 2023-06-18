@@ -1,8 +1,8 @@
-import Container from 'react-bootstrap/Container';
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { corn_logo, footer_bg, footer_logo } from '../../assets';
+import { corn_logo, footer_bg, footer_logo } from '~/assets';
 
 const Footer = ({data}) => {
   const options = data?.about;

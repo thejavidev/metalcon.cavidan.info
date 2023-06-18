@@ -1,14 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root{
-    --rgba1:rgba(0, 62, 101, 0.89);
-    --rgba2:rgba(0, 0, 0, 0.89);
+
+:root {
+    --rgba1: rgba(0, 62, 101, 0.89);
+    --rgba2: rgba(0, 0, 0, 0.89);
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
     width: 8px;
 }
-img{
+
+img {
     border-style: none;
     vertical-align: middle;
     -o-object-fit: cover;
@@ -17,7 +20,7 @@ img{
     width: auto;
 }
 
-.breadcump::before{
+.breadcump::before {
     content: "";
     background: rgba(49, 105, 150, 0.95);
     height: 100%;
@@ -25,7 +28,8 @@ img{
     mix-blend-mode: multiply;
     position: absolute;
 }
-.sliderItem::before{
+
+.sliderItem::before {
     content: "";
     background: rgba(49, 105, 150, 0.95);
     height: 100%;
@@ -33,34 +37,42 @@ img{
     mix-blend-mode: multiply;
     position: absolute;
 }
-.sliderItem h1{
+
+.sliderItem h1 {
     color: #fff;
     font-size: 40px;
-    
+
     text-align: center;
 }
-.sliderItem p{
+
+.sliderItem p {
     color: #fff;
     padding: 30px 0;
     text-align: center;
 }
-.services:nth-child(1){
+
+.services:nth-child(1) {
     background: #10446B;
 }
-.services:nth-child(2){
+
+.services:nth-child(2) {
     background: #0F3E60;
 }
-.services:nth-child(3){
+
+.services:nth-child(3) {
     background: #10446B;
 }
-.services:nth-child(4){
+
+.services:nth-child(4) {
     background: #124A72;
 }
-.services{
+
+.services {
     transition: all .3s linear;
     overflow: hidden;
 }
-.services::before{
+
+.services::before {
     content: "";
     background: linear-gradient(180deg, #4A9CC2 0%, #124972 128.6%);
     height: 100%;
@@ -74,35 +86,45 @@ img{
     opacity: 0;
     z-index: -1;
 }
-.services:hover::before{
+
+.services:hover::before {
     transform: scaleX(1) scaleY(1) rotate(360deg);
     opacity: 1;
 }
-.services:hover .current{
+
+.services:hover .current {
     display: none;
 }
-.services:hover .onhover{
+
+.services:hover .onhover {
     display: block;
 }
-.spesfics{
+
+.spesfics {
     transition: all .3s linear;
 }
-.spesfics:hover{
-    background: #124972 ;
+
+.spesfics:hover {
+    background: #124972;
 }
-.spesfics:hover *{
+
+.spesfics:hover * {
     color: #fff;
 }
-.spesfics:hover .current{
+
+.spesfics:hover .current {
     display: none;
 }
-.spesfics:hover .onhover{
+
+.spesfics:hover .onhover {
     display: block;
 }
-.transition{
+
+.transition {
     transition: all 0.6s ease;
 }
-.project_box::before{
+
+.project_box::before {
     content: "";
     background: rgba(49, 105, 150, 0.95);
     height: 100%;
@@ -117,17 +139,84 @@ img{
     padding: 10px;
     opacity: 0;
 }
-.project_box:hover::before{
+
+.project_box:hover::before {
     transform: scaleY(1) scaleX(1);
     opacity: 1;
 }
-.project_box:hover .text{
+
+.project_box:hover .text {
     bottom: 0;
     opacity: 1;
 }
-.footer_bg{
+
+.footer_bg {
     background-position: center center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
+}
 
+@keyframes shadow324 {
+
+    0%,
+    100% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.2, 1);
+    }
+}
+
+@keyframes jump7456 {
+    15% {
+        border-bottom-right-radius: 3px;
+    }
+
+    25% {
+        transform: translateY(9px) rotate(22.5deg);
+    }
+
+    50% {
+        transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+        border-bottom-right-radius: 40px;
+    }
+
+    75% {
+        transform: translateY(9px) rotate(67.5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(90deg);
+    }
+}
+
+.loaderZ::before {
+    content: "";
+    width: 48px;
+    height: 5px;
+    background: rgba(0, 62, 101, 0.2);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-radius: 50%;
+    -webkit-animation: shadow324 0.5s linear infinite;
+    animation: shadow324 0.5s linear infinite;
+}
+
+.loaderZ:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #003E65;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    -webkit-animation: jump7456 0.5s linear infinite;
+    animation: jump7456 0.5s linear infinite;
+}
+.services-list ul{
+    list-style: disc;
+    padding-left: 18px;
 }
