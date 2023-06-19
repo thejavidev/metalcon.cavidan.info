@@ -18,7 +18,7 @@ import {
   AspectRatio
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Sending=()=>{
   return(
@@ -68,6 +68,9 @@ const Contact = ({data}) => {
         })
       })
   }
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <>
       <m.div

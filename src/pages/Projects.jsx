@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+
 import React, { useEffect, useState } from 'react';
 import { motion as m } from "framer-motion";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -23,7 +23,9 @@ const Projects = ({ data }) => {
   const handleMoreImage = () => {
     setNext(next + imagePerRow);
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <>
       <m.div

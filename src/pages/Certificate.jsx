@@ -13,9 +13,13 @@ import {
   BreadcrumbLink,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
+import { useEffect } from "react";
 
 const Certificate = ({ data }) => {
   const licency = data?.licency;
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <>
       <m.div

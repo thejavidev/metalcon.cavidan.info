@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion as m } from "framer-motion";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { breadcump } from '~/assets';
@@ -19,7 +19,9 @@ const ProjectsSingle = ({ data }) => {
   const projects = data?.projects;
   const currentPost = projects?.find((post) => post?.slug === slug);
   const currentImages = currentPost?.images;
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
   return (
     <>

@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { corn_logo, footer_bg, footer_logo } from '~/assets';
+import { Link } from 'react-router-dom';
 
 const Footer = ({data}) => {
   const options = data?.about;
@@ -21,10 +22,10 @@ const Footer = ({data}) => {
         </Row>
         <Row className="w-full m-0 justify-between bg-[--rgba2] text-[#fff] pt-[20px] pb-[20px] pl-[50px] pr-[50px] ">
             <Col lg={6} className="left">
-              <LazyLoadImage src={footer_logo}/>
+              <Link to={'/'}><LazyLoadImage src={footer_logo}/></Link>
             </Col>
             <Col lg={6} className="right flex gap-[20px] items-center justify-end ">
-                <LazyLoadImage src={corn_logo} />
+                <a href="https://corn.az" target='_blank'><LazyLoadImage src={corn_logo} /></a>
                 <div className=" flex items-center gap-3">
                   
                   <p>Bütün hüquqlar qorunur </p>
