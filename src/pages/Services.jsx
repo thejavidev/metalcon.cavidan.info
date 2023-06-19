@@ -96,22 +96,22 @@ const Services = ({ data }) => {
                   return (
                     <TabPanel key={i}>
                       <Row className='items-center'>
-                        <Col lg={4} className='flex justify-center items-center h-full'>
-                          <div className='services-list' dangerouslySetInnerHTML={{ __html: currentPost?.text2_az }}></div>
-
+                        <Col lg={5} className='flex justify-center items-center h-full'>
+                            <div className='services-list' dangerouslySetInnerHTML={{ __html: currentPost?.text2_az }}></div>
+                           
                         </Col>
-                        <Col lg={8} md={12}>
+                        <Col lg={7} md={12}>
                           <Swiper
                             spaceBetween={10}
-                            loop={true}
-                            thumbs={{ swiper: thumbsSwiper && !thumbsSwiper?.destroyed ? thumbsSwiper : null }}
+                           loop={true}
+                            thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
                             modules={[FreeMode, Navigation, Thumbs]}
                             className="mySwiper2 mb-2"
                           >
                             {
                               currentImages && currentImages?.map((item, index) => (
                                 <SwiperSlide key={index}>
-                                  <LazyLoadImage className="h-[400px] w-full md:h-[250px] cursor-pointer" src={item?.src} />
+                                  <LazyLoadImage className="h-[400px] w-full md:h-[250px]" src={item?.src} />
                                 </SwiperSlide>
 
                               ))
@@ -149,7 +149,7 @@ const Services = ({ data }) => {
                   )
                 })
               }
-
+             
             </TabPanels>
           </Tabs>
 

@@ -43,7 +43,7 @@ const Home = ({ data }) => {
           {
             homebanner && homebanner?.map((cur, i) => (
               <SwiperSlide key={i} className='relative sliderItem'>
-                <LazyLoadImage src={cur?.src} className='w-full h-[800px]' />
+                <LazyLoadImage src={cur?.src} className='w-full h-[650px]' />
                 <div className="flex justify-center items-center flex-col top-0 h-full absolute w-full">
                   <div className='text-[#fff] text-center' dangerouslySetInnerHTML={{ __html: cur?.title_az }}></div>
                 </div>
