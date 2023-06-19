@@ -6,6 +6,7 @@
     --rgba1: rgba(0, 62, 101, 0.89);
     --rgba2: rgba(0, 0, 0, 0.89);
     --rgba3:rgba(0,0,0,0.2);
+    --rgba4:rgba(0, 0, 0, 0.7);
 }
 
 ::-webkit-scrollbar {
@@ -120,7 +121,9 @@ img {
 .spesfics:hover .onhover {
     display: block;
 }
-
+.transition3{
+    transition: all 0.3s linear;
+}
 .transition {
     transition: all 0.6s ease;
 }
@@ -242,4 +245,16 @@ img {
     height: 100%;
     border-radius: 30px;
     animation: moving 1s ease-in-out infinite;
+}
+.navbarli a::after{
+    content: "";
+    display: block;
+    border-bottom: 2px solid #4A9CC2;
+    padding-bottom: 1%;
+    transform: scaleX(0);
+    width: 100%;
+    transition: transform 300ms ease-in-out;
+}
+.navbarli:hover a::after{
+    transform: scaleX(1);
 }

@@ -3,10 +3,10 @@ import Header from '../header/Header'
 import Footer from '../footer/Footer';
 import { AnimatePresence } from 'framer-motion';
 
-const Layout = ({data, children }) => {
+const Layout = ({ data, children }) => {
   return (
     <>
-      <Header />
+      <Header data={data} />
       <AnimatePresence >
         {children}
       </AnimatePresence>

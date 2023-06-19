@@ -12,7 +12,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 import { line } from '~/assets';
-import Button from 'react-bootstrap/Button';
+
 
 const Home = ({ data }) => {
   const homebanner = data?.homebanner;
@@ -29,7 +29,7 @@ const Home = ({ data }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.75, ease: "easeOut" }}
+        transition={{ duration: 1.75, ease: "easeOut" }}
       >
         <Swiper
           spaceBetween={30}
