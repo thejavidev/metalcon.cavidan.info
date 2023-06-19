@@ -5,7 +5,7 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useParams } from 'react-router';
+
 import { LightgalleryItem } from "react-lightgallery";
 import {
   Breadcrumb,
