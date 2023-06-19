@@ -24,19 +24,19 @@ const Router =({data})=>{
         },
         {
             path:'/projects',
-            element:<Projects />
+            element:<Projects data={data} />
         },
         {
             path:'/projects/:slug',
-            element:<ProjectsSingle />
+            element:<ProjectsSingle data={data} />
         },
         {
             path:'/certificate',
-            element:<Certificate />
+            element:<Certificate data={data} />
         },
         {
             path:'/contact',
-            element:<Contact />
+            element:<Contact data={data} />
         }
     ]
     const route = useRoutes(minirouter)

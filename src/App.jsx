@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { loadposts } from "./components/store/posts";
 import "swiper/css";
 import Loader from "./components/loader/Loader";
+import "lightgallery.js/dist/css/lightgallery.css";
 function App() {
 
   const dispatch = useDispatch();

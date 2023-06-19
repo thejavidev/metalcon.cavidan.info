@@ -12,13 +12,17 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 import { line } from '~/assets';
+import Button from 'react-bootstrap/Button';
 
 const Home = ({ data }) => {
   const homebanner = data?.homebanner;
   const services = data?.services;
   const options = data?.about;
   const spesfics = data?.spesfics;
-  const projects=data?.projects;
+  const projects = data?.projects;
+
+
+
   return (
     <>
       <m.div
@@ -63,21 +67,21 @@ const Home = ({ data }) => {
             {
               services && services?.map((cur, i) => (
                 <SwiperSlide key={i} className='services p-[30px] h-[280px] relative'>
-                
-                    <div className="flex justify-between items-center flex-col h-full w-full">
-                      <div className="">
-                        <LazyLoadImage src={cur?.cover} className='w-full h-[70px] current' />
-                        <LazyLoadImage src={cur?.cover_hover} className='w-full h-[70px] current onhover hidden' />
-                      </div>
-                      <div className='font-[700] text-[16px] uppercase text-[#fff] pt-[20px] mb-[10px] pl-[0] pr-[0]' dangerouslySetInnerHTML={{ __html: cur?.name_az }}></div>
-                      <span className='bg-[#4A9CC2] w-[80px] h-[2px] block ' />
-                      <p className='font-[200] text-[14px] text-center pb-[20px] text-[#fff]' dangerouslySetInnerHTML={{ __html: cur?.text_az }}></p>
-                      <Link to={`/services/${cur?.slug}`} className='border-1 p-[5px] rounded-full'>
 
-                        <AiOutlineRight className='text-[#fff]  ' />
-                      </Link>
+                  <div className="flex justify-between items-center flex-col h-full w-full">
+                    <div className="">
+                      <LazyLoadImage src={cur?.cover} className='w-full h-[70px] current' />
+                      <LazyLoadImage src={cur?.cover_hover} className='w-full h-[70px] current onhover hidden' />
                     </div>
-                 
+                    <div className='font-[700] text-[16px] uppercase text-[#fff] pt-[20px] mb-[10px] pl-[0] pr-[0]' dangerouslySetInnerHTML={{ __html: cur?.name_az }}></div>
+                    <span className='bg-[#4A9CC2] w-[80px] h-[2px] block ' />
+                    <p className='font-[200] text-[14px] text-center pb-[20px] text-[#fff]' dangerouslySetInnerHTML={{ __html: cur?.text_az }}></p>
+                    <Link to={`/services/${cur?.slug}`} className='border-1 p-[5px] rounded-full'>
+
+                      <AiOutlineRight className='text-[#fff]  ' />
+                    </Link>
+                  </div>
+
                 </SwiperSlide>
               ))
             }
@@ -147,7 +151,7 @@ const Home = ({ data }) => {
             </div>
             <Row className=''>
               {
-                projects && projects?.map((cur, i) => (
+                projects && projects?.slice(0, 4)?.map((cur, i) => (
                   <Col lg={3} key={i} className=' flex items-center   p-[10px]'>
                     <Link to={`/projects/${cur?.slug}`} className="w-full overflow-hidden relative project_box ">
                       <LazyLoadImage src={cur?.cover} className='w-full' />
@@ -158,6 +162,9 @@ const Home = ({ data }) => {
                   </Col>
                 ))
               }
+               <Link to='/projects'  className="bg-[#f3f3f3] max-w-max ml-3 border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
+                  more
+                </Link>
             </Row>
           </Container>
         </section>
