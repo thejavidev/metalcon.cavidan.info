@@ -17,7 +17,7 @@ function App() {
     dispatch(loadposts())
     setTimeout(() => {
       setLoading(false)
-    }, 500);
+    }, 3500);
   }, [dispatch])
 
 

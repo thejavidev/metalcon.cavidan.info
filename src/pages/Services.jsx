@@ -39,7 +39,7 @@ const Services = ({ data }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1.75, ease: "easeOut" }}
+        transition={{ duration: 1.25, ease: "easeOut" }}
       >
         <div className='relative w-full p-[0] m-[0] h-[35vh] breadcump'>
           <LazyLoadImage src={breadcump} className='w-full h-full' />
@@ -65,10 +65,9 @@ const Services = ({ data }) => {
               >
                 {
                   services && services?.map((cur, i) => (
-                    <SwiperSlide key={i} className='services p-[30px] h-[250px] relative'>
+                    <SwiperSlide key={i} className='services'>
                       <Tab className='w-full h-full' >
-                        <NavLink className='w-full h-full' to={`/services/${cur?.slug}`}>
-
+                        <NavLink className='w-full h-[250px] relative  servicesa p-[30px] ' to={`/services/${cur?.slug}`}>
                           <div className="flex justify-between items-center flex-col h-full w-full">
                             <div className="">
                               <LazyLoadImage src={cur?.cover} className='w-full h-[70px] current' />
@@ -76,8 +75,10 @@ const Services = ({ data }) => {
                             </div>
                             <div className='font-[700] text-[16px] uppercase text-[#fff] pt-[20px] mb-[10px] pl-[0] pr-[0]' dangerouslySetInnerHTML={{ __html: cur?.name_az }}></div>
                             <span className='bg-[#4A9CC2] w-[80px] h-[2px] block ' />
+                            <div className='aidv border-1 border-white rounded-full p-[5px]'>
+                              <AiOutlineRight className='text-[#fff] ai' />
+                            </div>
 
-                            <AiOutlineRight className='text-[#fff]  ' />
                           </div>
                         </NavLink>
                       </Tab>
@@ -97,13 +98,13 @@ const Services = ({ data }) => {
                     <TabPanel key={i}>
                       <Row className='items-center'>
                         <Col lg={5} className='flex justify-center items-center h-full'>
-                            <div className='services-list' dangerouslySetInnerHTML={{ __html: currentPost?.text2_az }}></div>
-                           
+                          <div className='services-list' dangerouslySetInnerHTML={{ __html: currentPost?.text2_az }}></div>
+
                         </Col>
                         <Col lg={7} md={12}>
                           <Swiper
                             spaceBetween={10}
-                           loop={true}
+                            loop={true}
                             thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
                             modules={[FreeMode, Navigation, Thumbs]}
                             className="mySwiper2 mb-2"
@@ -149,7 +150,7 @@ const Services = ({ data }) => {
                   )
                 })
               }
-             
+
             </TabPanels>
           </Tabs>
 

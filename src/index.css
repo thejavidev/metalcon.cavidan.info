@@ -69,19 +69,18 @@ img {
     background: #124A72;
 }
 
-.services {
+.servicesa {
     transition: all .3s linear;
     overflow: hidden;
 }
-
-.services::before {
+.servicesa::before {
     content: "";
     background: linear-gradient(180deg, #4A9CC2 0%, #124972 128.6%);
     height: 100%;
     width: 100%;
     position: absolute;
     transition: all 0.3s linear;
-    transform: scaleY(0) scaleX(0) rotate(0deg);
+    transform: scaleY(0) scaleX(0) ;
     top: 0;
     left: 0;
     right: 0;
@@ -89,19 +88,41 @@ img {
     z-index: -1;
 }
 
-.services:hover::before {
-    transform: scaleX(1) scaleY(1) rotate(360deg);
+.servicesa:hover::before {
+    transform: scaleX(1) scaleY(1) ;
     opacity: 1;
 }
 
-.services:hover .current {
+.servicesa:hover .current,
+.servicesa.active .current {
     display: none;
 }
 
-.services:hover .onhover {
+.servicesa:hover .onhover ,
+.servicesa.active .onhover {
     display: block;
 }
+.servicesa.active{
+    background: linear-gradient(180deg, #4A9CC2 0%, #124972 128.6%);
+}
+.servicesa .aidv{
+    transition: all .3s linear;
+}
+@keyframes anime1{
+    to{
+        transform: translateY(-8px);
+    }
+    from{
+        transform: translateY(0px);
+    }
+}
+.servicesa.active .aidv{
+    animation: anime1 1.5s ease alternate infinite;
+}
+.servicesa.active .ai{
 
+    transform: rotate(90deg);
+}
 .spesfics {
     transition: all .3s linear;
 }

@@ -24,7 +24,7 @@ const About = ({ data }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1.75, ease: "easeOut" }}
+        transition={{ duration: 1.25, ease: "easeOut" }}
       >
         <div className='relative w-full p-[0] m-[0] h-[35vh] breadcump'>
           <LazyLoadImage src={breadcump} className='w-full h-full' />

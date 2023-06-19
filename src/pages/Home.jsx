@@ -29,7 +29,7 @@ const Home = ({ data }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1.75, ease: "easeOut" }}
+        transition={{ duration: 1.25, ease: "easeOut" }}
       >
         <Swiper
           spaceBetween={30}
@@ -66,7 +66,7 @@ const Home = ({ data }) => {
           >
             {
               services && services?.map((cur, i) => (
-                <SwiperSlide key={i} className='services p-[30px] h-[280px] relative'>
+                <SwiperSlide key={i} className='services servicesa p-[30px] h-[280px] relative'>
 
                   <div className="flex justify-between items-center flex-col h-full w-full">
                     <div className="">
@@ -77,7 +77,6 @@ const Home = ({ data }) => {
                     <span className='bg-[#4A9CC2] w-[80px] h-[2px] block ' />
                     <p className='font-[200] text-[14px] text-center pb-[20px] text-[#fff]' dangerouslySetInnerHTML={{ __html: cur?.text_az }}></p>
                     <Link to={`/services/${cur?.slug}`} className='border-1 p-[5px] rounded-full'>
-
                       <AiOutlineRight className='text-[#fff]  ' />
                     </Link>
                   </div>
