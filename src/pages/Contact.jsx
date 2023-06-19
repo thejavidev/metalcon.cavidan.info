@@ -9,6 +9,8 @@ import { BiMap } from 'react-icons/bi';
 import { BsTelephonePlus } from 'react-icons/bs';
 import { AiOutlineMail } from 'react-icons/ai';
 import Button from 'react-bootstrap/Button';
+import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -16,8 +18,56 @@ import {
   AspectRatio
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
+import { useRef, useState } from "react";
+
+const Sending=()=>{
+  return(
+    <div class="loaderContact block mt-[10px] mb-[10px] w-[130px] h-[4px] rounded-[30px] relative bg-[--rgba3]"></div>
+  )
+}
+
 const Contact = ({data}) => {
   const options = data?.about;
+  const formRef = useRef();
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const handleChange = (e) => {
+    const { name, value, message, phone, email } = e.target;
+    setForm({ ...form, [name]: value, [message]: value, [phone]: value, [email]: value })
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    emailjs.send('service_ifvxroq', 'template_pad4cel',
+      {
+          to_name: form.name,
+          to_phone: form.phone,
+          to_email: form.email,
+          to_email: 'contact@metalcon.az',
+          message: form.message
+      },
+      'xeLUauh7KhJi8704j',
+    )
+      .then(() => {
+        setLoading(false);
+        Swal.fire("Əla!", "Ismarıc uğurla göndərilmişdir!", "success");
+        setForm({
+          name: '',
+          phone: '',
+          email: '',
+          message: ''
+        }, (error) => {
+          setLoading(false)
+          console.log(error)
+          alert('xeta bas verdi')
+        })
+      })
+  }
   return (
     <>
       <m.div
@@ -45,37 +95,55 @@ const Contact = ({data}) => {
               <Col lg={3}>
                 <div className="flex flex-col gap-[30px]">
                   <div className="flex items-center gap-[20px]">
-                    <BiMap /> 
-                    <h3>{options?.unvan_az}</h3>
+                    <BiMap className="text-[30px]" /> 
+                    <h3 className="text-[20px]">{options?.unvan_az}</h3>
                   </div>
                   <div className="flex items-center gap-[20px]">
-                    <BsTelephonePlus /> 
-                    <a href={`tel:${options?.tel2}`}>{options?.tel2}</a>
+                    <BsTelephonePlus className="text-[30px]" /> 
+                    <a className="text-[20px]" href={`tel:${options?.tel2}`}>{options?.tel2}</a>
                   </div>
                   <div className="flex items-center gap-[20px]">
-                    <AiOutlineMail /> 
-                    <a href={`mailto:${options?.email}`}>{options?.email}</a>
+                    <AiOutlineMail className="text-[30px]" /> 
+                    <a className="text-[20px]" href={`mailto:${options?.email}`}>{options?.email}</a>
                   </div>
                 </div>
               </Col>
               <Col lg={5}>
-                <form className="w-full">
+                <form className="w-full" onSubmit={handleSubmit} ref={formRef}>
                     <div className="w-full mb-[30px]">
-                      <input type="text" placeholder="Ad,Soyad" className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
+                      <input
+                        value={form.name} required
+                        onChange={handleChange}
+                        name='name'
+                       type="text" placeholder="Ad,Soyad" className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
                     </div>
                     <div className="w-full mb-[30px]">
-                      <input type="text" placeholder="Nomre" className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
+                      <input 
+                        value={form.phone} required
+                        onChange={handleChange}
+                        name='phone'
+                        type="text"
+                       placeholder="Nomre" className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
                     </div>
                     <div className="w-full mb-[30px]">
-                      <input type="text" placeholder="Email" className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
+                      <input 
+                      type="text" 
+                      value={form.email} required
+                      onChange={handleChange}
+                      name='email'
+                      placeholder="Email" className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
                     </div>
                     <div className="w-full mb-[30px]">
-                      <textarea name="" placeholder="Mesaj"  className="w-full p-[10px] outline-none text-[16px] resize-none h-[100px] text-[#000] border-1 border-black"></textarea>
+                      <textarea
+                        value={form.message} required
+                        name="message"
+                        onChange={handleChange}
+                      placeholder="Mesaj"  className="w-full p-[10px] outline-none text-[16px] resize-none h-[100px] text-[#000] border-1 border-black"></textarea>
                     </div>
                     <div className="w-full mb-[30px]">
-                      <Button className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1  mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
-                        Gonder
-                      </Button>
+                      <button className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1  mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
+                      {loading ? <Sending /> : 'Göndər'}
+                      </button>
                     </div>
                 </form>
               </Col>
