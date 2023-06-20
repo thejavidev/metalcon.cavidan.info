@@ -17,6 +17,8 @@
     --bg2:#F0EFEF;
     --text:#000;
     --text2:#000;
+    --text3:#fff;
+    --header:#272727;
 }
 body{
     background: var(--bg);
@@ -31,6 +33,7 @@ body.dark{
     --bg2:#272727;
     --text:#ffff;
     --text2:#000;
+    --text3:#fff;
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -309,7 +312,26 @@ img {
     transition: all .4s ease;
 }
 .bg_rgba{
-    background: var(--rgba5);
+    background: var(--rgba4);
+}
+.bg_rgba2{
+    background-color: #000 !important;
+}
+.mobileHeader.open-header{
+    right: 0;
+}
+.mobile-menu-overlay{
+    transition: all 0.4s;
+    visibility: hidden;
+    opacity: 0;
+    background-color: rgba(25, 25, 25, 0.75);
+}
+.mobile-menu-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+.tansitionheader{
+    transition: all 0.6s ease;
 }
 @media screen and (max-width:1023px) {
     .sliderItem h1{

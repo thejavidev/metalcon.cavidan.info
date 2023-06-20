@@ -25,7 +25,7 @@ const Upper =React.memo(({toggle, switchLang})=>{
     return(
         <div className='relative  text-black px-2 bg-[#1677A4] w-[55px] h-[55px] md:h-[40px] md:w-[40px]'>
             <div onClick={toggle} className='flex items-center cursor-pointer w-full h-full justify-center text-[#fff] '>
-                <button className='text-[--text] lowercase text-[20px] md:text-[16px]'>{localStorage.getItem("i18nextLng") ? localStorage.getItem("i18nextLng") : "az"}</button>
+                <button className='text-[--text3] lowercase text-[20px] md:text-[16px]'>{localStorage.getItem("i18nextLng") ? localStorage.getItem("i18nextLng") : "az"}</button>
                 
             </div>
             {switchLang}

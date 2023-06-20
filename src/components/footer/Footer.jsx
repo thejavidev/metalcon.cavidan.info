@@ -16,21 +16,21 @@ const Footer = ({data}) => {
               background: `url(${footer_bg})`,
             }}>
        
-        <Row className=" w-full m-0   bg-[--rgba1] text-[#fff] p-[70px] ">
+        <Row className=" w-full m-0   bg-[--rgba1] text-[#fff] p-[70px] md:p-[20px]">
            <div className="flex items-center justify-center">
            <a className='text-center text-[#fff]' href={`tel:${options?.tel1}`}>{options?.tel1}</a> <span className='ml-[10px] mr-[10px]'> / </span>
             <a className='text-[#fff]' href={`mailto:${options?.email}`}>{options?.email}</a>
            </div>
         </Row>
-        <Row className="w-full m-0 justify-between bg-[--rgba2] text-[#fff] pt-[20px] pb-[20px] pl-[50px] pr-[50px] ">
-            <Col lg={6} className="left">
-              <Link to={'/'}><LazyLoadImage src={footer_logo}/></Link>
+        <Row className="w-full m-0 justify-between bg-[--rgba2] text-[#fff] pt-[20px] pb-[20px] pl-[50px] pr-[50px] md:pl-[20px] md:pr-[20px] md:flex-col">
+            <Col lg={6} xs={12} className="left md:items-center flex md:justify-center md:mb-4">
+              <Link to={'/'}><LazyLoadImage src={footer_logo} className='md:h-[40px]'/></Link>
             </Col>
-            <Col lg={6} className="right flex gap-[20px] items-center justify-end ">
-                <a href="https://corn.az" target='_blank'><LazyLoadImage src={corn_logo} /></a>
+            <Col lg={6} xs={12} className="right flex gap-[20px] items-center justify-end md:justify-center md:mt-3 md:flex-col">
+                <a href="https://corn.az" target='_blank'><LazyLoadImage src={corn_logo} className='md:h-[20px]' /></a>
                 <div className=" flex items-center gap-3">
                   
-                  <p>{t("huquq")} </p>
+                  <p className='md:text-[14px]'>{t("huquq")} </p>
                   {year} 
                 </div>
             </Col>
