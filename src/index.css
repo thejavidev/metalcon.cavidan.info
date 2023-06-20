@@ -281,8 +281,7 @@ img {
     transform: scaleX(1);
 }
 .nonVisible{
-    visibility: hidden;
-    height: 0;
+   display: none;
     transition: all .4s ease;
 }
 .bg_rgba{

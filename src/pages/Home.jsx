@@ -12,7 +12,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 import { line } from '~/assets';
-
+import { getMultiLang as ml } from '~/components/MultiLang';
+import { useTranslation } from 'react-i18next';
 
 const Home = ({ data }) => {
   const homebanner = data?.homebanner;
@@ -20,7 +21,7 @@ const Home = ({ data }) => {
   const options = data?.about;
   const spesfics = data?.spesfics;
   const projects = data?.projects;
-
+  const [t] = useTranslation("translation");
 
 
   return (
@@ -49,7 +50,7 @@ const Home = ({ data }) => {
               <SwiperSlide key={i} className='relative sliderItem'>
                 <LazyLoadImage src={cur?.src} className='w-full h-[650px]' />
                 <div className="flex justify-center items-center flex-col top-0 h-full absolute w-full">
-                  <div className='text-[#fff] text-center' dangerouslySetInnerHTML={{ __html: cur?.title_az }}></div>
+                  <div className='text-[#fff] text-center' dangerouslySetInnerHTML={{ __html: cur?.title_az && ml(cur?.title_az,cur?.title_ru,cur?.title_en) }}></div>
                 </div>
               </SwiperSlide>
             ))
@@ -73,9 +74,9 @@ const Home = ({ data }) => {
                       <LazyLoadImage src={cur?.cover} className='w-full h-[70px] current' />
                       <LazyLoadImage src={cur?.cover_hover} className='w-full h-[70px] current onhover hidden' />
                     </div>
-                    <div className='font-[700] text-[16px] uppercase text-[#fff] pt-[20px] mb-[10px] pl-[0] pr-[0]' dangerouslySetInnerHTML={{ __html: cur?.name_az }}></div>
+                    <div className='font-[700] text-[16px] uppercase text-[#fff] pt-[20px] mb-[10px] pl-[0] pr-[0]' dangerouslySetInnerHTML={{ __html: cur?.name_az && ml(cur?.name_az,cur?.name_ru,cur?.name_en) }}></div>
                     <span className='bg-[#4A9CC2] w-[80px] h-[2px] block ' />
-                    <p className='font-[200] text-[14px] text-center pb-[20px] text-[#fff]' dangerouslySetInnerHTML={{ __html: cur?.text_az }}></p>
+                    <p className='font-[200] text-[14px] text-center pb-[20px] text-[#fff]' dangerouslySetInnerHTML={{ __html: cur?.text_az && ml(cur?.text_az,cur?.text_ru,cur?.text_en) }}></p>
                     <Link to={`/services/${cur?.slug}`} className='border-1 p-[5px] rounded-full'>
                       <AiOutlineRight className='text-[#fff]  ' />
                     </Link>
@@ -92,18 +93,18 @@ const Home = ({ data }) => {
         <section id="about" className='pt-[50px] pb-[50px] '>
           <Container>
             <div className="w-full flex justify-end items-end  ">
-              <h2 className='text-[35px] font-bold text-[#3498db]'>Dəmirin <span className='text-[#000]'>Gücü</span></h2>
+              <h2 className='text-[35px] font-bold text-[#3498db] '>{t("iron")} <span className='text-[#000] font-[200]'>{t("guc")}</span></h2>
             </div>
             <div className="w-full flex items-center mb-[30px]">
               <LazyLoadImage src={line} className='h-[2px] mr-[20px]' />
-              <h2 className='text-[20px] font-bold text-[#3498db] uppercase'>METALCON <span className='text-[#000]'>HAQQINDA</span></h2>
+              <h2 className='text-[20px] font-bold text-[#3498db] uppercase  '>{t("metalcon")} <span className='text-[#000] '>{t("haqqinda")}</span></h2>
             </div>
             <Row className='items-center'>
               <Col lg={6}>
                 <LazyLoadImage src={options?.src} />
               </Col>
               <Col lg={6} className='flex items-center  flex-col'>
-                <div className="w-full text-justify" dangerouslySetInnerHTML={{ __html: options?.text_az }}></div>
+                <div className="w-full text-justify" dangerouslySetInnerHTML={{ __html: options?.text_az  }}></div>
                 <Link to={`/about`} className='w-full justify-end items-end flex mt-[10px]'>
                   <div className=' border-1 border-black pt-[10px] pb-[10px] pl-[20px] pr-[20px]'>
                     Etrafli
