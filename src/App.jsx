@@ -6,6 +6,9 @@ import { loadposts } from "./components/store/posts";
 import "swiper/css";
 import Loader from "./components/loader/Loader";
 import "lightgallery.js/dist/css/lightgallery.css";
+import { createContext } from "react";
+
+export const ThemeContext = createContext(null);
 function App() {
 
   const dispatch = useDispatch();

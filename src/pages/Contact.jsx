@@ -98,23 +98,23 @@ const Contact = ({data}) => {
         <section className="pt-[50px] pb-[50px]">
           <Container>
             <Row>
-              <Col lg={3}>
-                <div className="flex flex-col gap-[30px]">
+              <Col lg={3} className="lg:mt-[40px]">
+                <div className="flex flex-col flex-wrap lg:flex-row gap-[30px]">
                   <div className="flex items-center gap-[20px]">
-                    <BiMap className="text-[30px]" /> 
-                    <h3 className="text-[20px]">{ml(options?.unvan_az,options?.unvan_ru,options?.unvan_en)}</h3>
+                    <BiMap className="text-[30px] lg:text-[20px]" /> 
+                    <h3 className="text-[20px] lg:text-[16px]">{ml(options?.unvan_az,options?.unvan_ru,options?.unvan_en)}</h3>
                   </div>
                   <div className="flex items-center gap-[20px]">
-                    <BsTelephonePlus className="text-[30px]" /> 
-                    <a className="text-[20px]" href={`tel:${options?.tel2}`}>{options?.tel2}</a>
+                    <BsTelephonePlus className="text-[30px] lg:text-[20px]" /> 
+                    <a className="text-[20px] lg:text-[16px]" href={`tel:${options?.tel2}`}>{options?.tel2}</a>
                   </div>
                   <div className="flex items-center gap-[20px]">
-                    <AiOutlineMail className="text-[30px]" /> 
-                    <a className="text-[20px]" href={`mailto:${options?.email}`}>{options?.email}</a>
+                    <AiOutlineMail className="text-[30px] lg:text-[20px]" /> 
+                    <a className="text-[20px] lg:text-[16px]" href={`mailto:${options?.email}`}>{options?.email}</a>
                   </div>
                 </div>
               </Col>
-              <Col lg={5}>
+              <Col lg={5} className="order-[-2]">
                 <form className="w-full" onSubmit={handleSubmit} ref={formRef}>
                     <div className="w-full mb-[30px]">
                       <input
@@ -154,7 +154,7 @@ const Contact = ({data}) => {
                     </div>
                 </form>
               </Col>
-              <Col lg={4}>
+              <Col lg={4} className="order-[-1]">
               <AspectRatio ratio={16 / 9} className=" h-[330px]">
                 <iframe src={options?.unvan_map}/>
               </AspectRatio>

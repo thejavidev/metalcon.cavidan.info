@@ -44,13 +44,13 @@ const About = ({ data }) => {
         </div>
         <section id="about" className='pt-[50px] pb-[50px] '>
           <Container>
-            <div className="w-full flex justify-end items-end  ">
-              <h2 className='text-[35px] font-bold text-[#3498db]'>{t("iron")} <span className='text-[#000]'>{t("guc")}</span></h2>
+            <div className="w-full flex justify-end items-end  mb-4 md:items-center md:justify-start">
+              <h2 className='text-[35px] lg:text-[25px] font-bold text-[#3498db]'>{t("iron")} <span className='text-[#000]'>{t("guc")}</span></h2>
             </div>
             
             <Row className='items-center'>
               <Col lg={6}>
-                <LazyLoadImage src={options?.src} />
+                <LazyLoadImage src={options?.src} className='lg:w-full lg:mb-4' />
               </Col>
               <Col lg={6} className='flex items-center  flex-col'>
                 <div className="w-full text-justify" dangerouslySetInnerHTML={{ __html: options?.text_az && ml(options?.text_az,options?.text_ru,options?.text_en)  }}></div>

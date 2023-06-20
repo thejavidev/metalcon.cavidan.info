@@ -119,14 +119,14 @@ const Services = ({ data }) => {
 
               </Swiper>
             </TabList>
-            <TabPanels className='pl-[100px] pr-[100px] pt-[50px] pb-[50px]'>
+            <TabPanels className='pl-[100px] pr-[100px] lg:pl-[20px] lg:pr-[20px] pt-[50px] pb-[50px]'>
               {
                 services && services?.map((item, i) => {
 
                   return (
                     <TabPanel key={i}>
                       <Row className='items-center'>
-                        <Col lg={5} className='flex justify-center items-center h-full'>
+                        <Col lg={5} className='flex justify-center items-center h-full lg:items-start lg:justify-start lg:mb-5'>
                           <div className='services-list' dangerouslySetInnerHTML={{ __html: currentPost?.text2_az && ml(currentPost?.text2_az,currentPost?.text2_ru,currentPost?.text2_en) }}></div>
 
                         </Col>
@@ -156,6 +156,32 @@ const Services = ({ data }) => {
                             watchSlidesProgress={true}
                             modules={[FreeMode, Navigation, Thumbs]}
                             className="mySwiper mb-4"
+                            breakpoints={{
+                              40: {
+                                  slidesPerView: 2,
+                  
+                              },
+                              340: {
+                                  slidesPerView: 2,
+                              },
+                              640: {
+                                  slidesPerView: 2,
+                  
+                              },
+                              768: {
+                                  slidesPerView: 2,
+                  
+                              },
+                              1024: {
+                                  slidesPerView: 3,
+                              },
+                              1399: {
+                                  slidesPerView: 4,
+                              },
+                              1499: {
+                                  slidesPerView: 4,
+                              },
+                          }}
                           >
                             <div className=" w-full">
 

@@ -37,7 +37,7 @@ const ProjectsSingle = ({ data }) => {
         <div className='relative w-full p-[0] m-[0] h-[35vh] breadcump'>
           <LazyLoadImage src={breadcump} className='w-full h-full' />
           <Container>
-            <Breadcrumb className='absolute bottom-[10px] z-10 text-[#fff]' spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
+            <Breadcrumb className='absolute bottom-[10px] z-10 text-[#fff] breadcumpol' spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
               <BreadcrumbItem>
                 <div className='font-[700] text-[16px] capitalize' ><Link to='/'>{t("home")}</Link></div>
               </BreadcrumbItem>
@@ -55,7 +55,7 @@ const ProjectsSingle = ({ data }) => {
             <Row>
               {
                 currentImages && currentImages?.map((cur, i) => (
-                  <Col key={i} lg={3} className='mb-[20px]'>
+                  <Col key={i} lg={3} md={6} xs={6} className='mb-[20px]'>
                     <LightgalleryItem group="any" src={cur?.src} >
                       <a >
                         <LazyLoadImage src={cur?.src} className='w-[100%!important] h-[300px] md:h-[150px] cursor-zoom-in' />

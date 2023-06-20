@@ -55,7 +55,7 @@ const Projects = ({ data }) => {
             <Row className=''>
               {
                 projects && projects?.slice(0, next)?.map((cur, i) => (
-                  <Col lg={3} key={i} className=' flex items-center   p-[10px]'>
+                  <Col lg={3} md={4} xs={6} key={i} className=' flex items-center   p-[10px]'>
                     <Link to={`/projects/${cur?.slug}`} className="w-full overflow-hidden relative project_box ">
                       <LazyLoadImage src={cur?.cover} className='w-full' />
                       <div className="text absolute opacity-[0] bottom-[-100px] w-full border-t-[1px] border-t-[#4A9CC2] pt-[10px] pb-[10px] pl-[20px] pr-[20px] z-30 transition">
@@ -65,13 +65,16 @@ const Projects = ({ data }) => {
                   </Col>
                 ))
               }
-              {next < projects?.length && (
-                <Button onClick={handleMoreImage} className="bg-[#ccc] max-w-max ml-3 border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] 
+             
+            </Row>
+            <div className='mt-2'>
+            {next < projects?.length && (
+                <Button onClick={handleMoreImage} className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] 
                 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-[#000] text-[17px] hover:text-[#fff] ">
                   {t("loadmore")}
                 </Button>
               )}
-            </Row>
+            </div>
           </Container>
         </section>
 

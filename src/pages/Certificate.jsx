@@ -47,10 +47,10 @@ const Certificate = ({ data }) => {
             <Row>
               {
                 licency && licency?.map((cur, i) => (
-                  <Col lg={3} key={i}>
+                  <Col lg={3} md={4} xs={6} key={i} className="lg:mb-7">
                     <LightgalleryItem group="any" src={cur?.src} >
                       <a>
-                        <LazyLoadImage src={cur?.src} className='w-[100%!important]  md:h-[150px] cursor-zoom-in' alt={cur?.alt_az} />
+                        <LazyLoadImage src={cur?.src} className='w-[100%!important]   cursor-zoom-in' alt={cur?.alt_az} />
                       </a>
                     </LightgalleryItem>
                   </Col>
