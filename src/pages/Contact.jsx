@@ -80,7 +80,7 @@ const Contact = ({data}) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1.25, ease: "easeOut" }}
+        transition={{ duration: 0.85, ease: "easeOut" }}
       >
         <div className='relative w-full p-[0] m-[0] h-[35vh] breadcump'>
           <LazyLoadImage src={breadcump} className='w-full h-full' />
@@ -95,22 +95,22 @@ const Contact = ({data}) => {
             </Breadcrumb>
           </Container>
         </div>
-        <section className="pt-[50px] pb-[50px]">
+        <section className="pt-[50px] pb-[50px] bg-[--bg]">
           <Container>
             <Row>
               <Col lg={3} className="lg:mt-[40px]">
                 <div className="flex flex-col flex-wrap lg:flex-row gap-[30px]">
                   <div className="flex items-center gap-[20px]">
-                    <BiMap className="text-[30px] lg:text-[20px]" /> 
-                    <h3 className="text-[20px] lg:text-[16px]">{ml(options?.unvan_az,options?.unvan_ru,options?.unvan_en)}</h3>
+                    <BiMap className="text-[30px] lg:text-[20px] text-[--text]" /> 
+                    <h3 className="text-[20px] lg:text-[16px] text-[--text]">{ml(options?.unvan_az,options?.unvan_ru,options?.unvan_en)}</h3>
                   </div>
                   <div className="flex items-center gap-[20px]">
-                    <BsTelephonePlus className="text-[30px] lg:text-[20px]" /> 
-                    <a className="text-[20px] lg:text-[16px]" href={`tel:${options?.tel2}`}>{options?.tel2}</a>
+                    <BsTelephonePlus className="text-[30px] lg:text-[20px] text-[--text]" /> 
+                    <a className="text-[20px] lg:text-[16px] text-[--text]" href={`tel:${options?.tel2}`}>{options?.tel2}</a>
                   </div>
                   <div className="flex items-center gap-[20px]">
-                    <AiOutlineMail className="text-[30px] lg:text-[20px]" /> 
-                    <a className="text-[20px] lg:text-[16px]" href={`mailto:${options?.email}`}>{options?.email}</a>
+                    <AiOutlineMail className="text-[30px] lg:text-[20px] text-[--text]" /> 
+                    <a className="text-[20px] lg:text-[16px] text-[--text]" href={`mailto:${options?.email}`}>{options?.email}</a>
                   </div>
                 </div>
               </Col>
@@ -121,7 +121,7 @@ const Contact = ({data}) => {
                         value={form.name} required
                         onChange={handleChange}
                         name='name'
-                       type="text" placeholder={t("namesurname")} className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
+                       type="text" placeholder={t("namesurname")} className="w-full p-[10px] bg-[--bg] outline-none text-[16px] text-[--text] border-1 border-[--text2]" />
                     </div>
                     <div className="w-full mb-[30px]">
                       <input 
@@ -129,7 +129,7 @@ const Contact = ({data}) => {
                         onChange={handleChange}
                         name='phone'
                         type="text"
-                       placeholder={t("phone")} className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
+                       placeholder={t("phone")} className="w-full p-[10px] bg-[--bg] outline-none text-[16px] text-[--text] border-1 border-[--text2]" />
                     </div>
                     <div className="w-full mb-[30px]">
                       <input 
@@ -137,14 +137,14 @@ const Contact = ({data}) => {
                       value={form.email} required
                       onChange={handleChange}
                       name='email'
-                      placeholder={t("email")} className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
+                      placeholder={t("email")} className="w-full p-[10px] bg-[--bg] outline-none text-[16px] text-[--text] border-1 border-[--text2]" />
                     </div>
                     <div className="w-full mb-[30px]">
                       <textarea
                         value={form.message} required
                         name="message"
                         onChange={handleChange}
-                      placeholder={t("messages")}  className="w-full p-[10px] outline-none text-[16px] resize-none h-[100px] text-[#000] border-1 border-black"></textarea>
+                      placeholder={t("messages")}  className="w-full p-[10px] bg-[--bg] outline-none text-[16px] resize-none h-[100px] text-[--text] border-1 border-[--text2]"></textarea>
                     </div>
                     <div className="w-full mb-[30px]">
                       <Button className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1  mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px]

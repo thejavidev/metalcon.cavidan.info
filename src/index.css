@@ -16,7 +16,10 @@
     --bg:#fff;
     --bg2:#F0EFEF;
     --text:#000;
-    --text2:#fff;
+    --text2:#000;
+}
+body{
+    background: var(--bg);
 }
 body.dark{
     --sliderItem:rgba(13, 60, 99, 0.95);
@@ -32,7 +35,9 @@ body.dark{
 ::-webkit-scrollbar {
     width: 0px;
 }
-
+.services-list ul li{
+    color: var(--text);
+}
 img {
     border-style: none;
     vertical-align: middle;

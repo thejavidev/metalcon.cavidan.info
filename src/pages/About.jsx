@@ -15,19 +15,22 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getMultiLang as ml } from '~/components/MultiLang';
 
+
+
 const About = ({ data }) => {
   const [t] = useTranslation("translation");
   const options = data?.about;
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
+
   return (
     <>
       <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1.25, ease: "easeOut" }}
+        transition={{ duration: 0.85, ease: "easeOut" }}
       >
         <div className='relative w-full p-[0] m-[0] h-[35vh] breadcump'>
           <LazyLoadImage src={breadcump} className='w-full h-full' />
@@ -42,10 +45,10 @@ const About = ({ data }) => {
             </Breadcrumb>
           </Container>
         </div>
-        <section id="about" className='pt-[50px] pb-[50px] '>
+        <section id="about" className='pt-[50px] pb-[50px] bg-[--bg]'>
           <Container>
             <div className="w-full flex justify-end items-end  mb-4 md:items-center md:justify-start">
-              <h2 className='text-[35px] lg:text-[25px] font-bold text-[#3498db]'>{t("iron")} <span className='text-[#000]'>{t("guc")}</span></h2>
+              <h2 className='text-[35px] lg:text-[25px] font-bold text-[#3498db]'>{t("iron")} <span className='text-[--text]'>{t("guc")}</span></h2>
             </div>
             
             <Row className='items-center'>
@@ -53,7 +56,7 @@ const About = ({ data }) => {
                 <LazyLoadImage src={options?.src} className='lg:w-full lg:mb-4' />
               </Col>
               <Col lg={6} className='flex items-center  flex-col'>
-                <div className="w-full text-justify" dangerouslySetInnerHTML={{ __html: options?.text_az && ml(options?.text_az,options?.text_ru,options?.text_en)  }}></div>
+                <div className="w-full text-justify text-[--text]" dangerouslySetInnerHTML={{ __html: options?.text_az && ml(options?.text_az,options?.text_ru,options?.text_en)  }}></div>
               </Col>
             </Row>
           </Container>

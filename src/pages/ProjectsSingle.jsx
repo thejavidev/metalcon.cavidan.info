@@ -32,7 +32,7 @@ const ProjectsSingle = ({ data }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1.25, ease: "easeOut" }}
+        transition={{ duration: 0.85, ease: "easeOut" }}
       >
         <div className='relative w-full p-[0] m-[0] h-[35vh] breadcump'>
           <LazyLoadImage src={breadcump} className='w-full h-full' />
@@ -50,7 +50,7 @@ const ProjectsSingle = ({ data }) => {
             </Breadcrumb>
           </Container>
         </div>
-        <section className='pt-[50px] pb-[50px]'>
+        <section className='pt-[50px] pb-[50px] bg-[--bg]'>
           <Container>
             <Row>
               {
