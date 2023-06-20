@@ -63,7 +63,32 @@ const Services = ({ data }) => {
               <Swiper
                 spaceBetween={0}
                 slidesPerView={4}
-
+                breakpoints={{
+                  40: {
+                      slidesPerView: 1,
+      
+                  },
+                  340: {
+                      slidesPerView: 1,
+                  },
+                  640: {
+                      slidesPerView: 2,
+      
+                  },
+                  768: {
+                      slidesPerView: 2,
+      
+                  },
+                  1024: {
+                      slidesPerView: 3,
+                  },
+                  1399: {
+                      slidesPerView: 4,
+                  },
+                  1499: {
+                      slidesPerView: 4,
+                  },
+              }}
                 className="mySwiper w-full"
               >
                 {

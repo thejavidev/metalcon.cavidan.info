@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link, NavLink } from 'react-router-dom';
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { AiOutlineWhatsApp } from 'react-icons/ai';
+import { AiOutlineWhatsApp,AiOutlineMenu } from 'react-icons/ai';
 import { footer_logo } from '../../assets';
 import $ from 'jquery';
 import { useEffect } from 'react';
@@ -12,6 +12,7 @@ import { useState } from 'react';
 import Upper from './Upper';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+
 
 const Header = ({data}) => {
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -82,14 +83,14 @@ const Header = ({data}) => {
                 </a>
               </div>
             </div>
-            <div className=" w-full flex justify-between items-center ">
+            <div className=" w-full flex justify-between items-center lg:bg-[--rgba5]">
               <Col lg={4} className='pl-[30px] bg-[transparent] flex items-center justify-start bottommenu pt-[10px] pb-[10px]'>
                 <Link to={'/'} className=''>
                   <LazyLoadImage src={footer_logo} />
                 </Link>
               </Col>
               <Col lg={8} className='bg-[--rgba4] pt-[20px] pb-[20px] ulmaenu'>
-                <nav className='flex flex-wrap items-center justify-end '>
+                <nav className='flex flex-wrap items-center justify-end lg:hidden'>
                     <ul className='flex items-center justify-evenly w-full m-0 p-0'>
                         <li className='relative navbarli'>
                           <NavLink className='text-[18px] font-[300] transition3 text-[#fff] capitalize' to={'/about'}>{t("about")}</NavLink>
@@ -108,6 +109,9 @@ const Header = ({data}) => {
                         </li>
                     </ul>
                 </nav>
+                <div className="mobileMenu  justify-end mr-6 hidden lg:flex">
+                  <AiOutlineMenu className='text-[#fff] text-[25px] cursor-pointer' />
+                </div>
               </Col>
             </div>
         </header>

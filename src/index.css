@@ -287,3 +287,19 @@ img {
 .bg_rgba{
     background: var(--rgba5);
 }
+@media screen and (max-width:1023px) {
+    .sliderItem h1{
+        font-size: 30px;
+    }
+    .sliderItem p{
+        padding: 20px 0;
+    }
+}
+@media screen and (max-width:767px) {
+    .sliderItem h1{
+        font-size: 20px;
+    }
+    .sliderItem p{
+        padding: 20px;
+    }
+}
