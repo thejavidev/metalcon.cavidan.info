@@ -8,8 +8,10 @@ import Col from 'react-bootstrap/Col';
 import { BiMap } from 'react-icons/bi';
 import { BsTelephonePlus } from 'react-icons/bs';
 import { AiOutlineMail } from 'react-icons/ai';
-import Button from 'react-bootstrap/Button';
+import { useTranslation } from 'react-i18next';
+import { getMultiLang as ml } from '~/components/MultiLang';
 import Swal from 'sweetalert2';
+import Button from 'react-bootstrap/Button';
 import emailjs from '@emailjs/browser';
 import {
   Breadcrumb,
@@ -29,6 +31,7 @@ const Sending=()=>{
 const Contact = ({data}) => {
   const options = data?.about;
   const formRef = useRef();
+  const [t] = useTranslation("translation");
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -55,7 +58,7 @@ const Contact = ({data}) => {
     )
       .then(() => {
         setLoading(false);
-        Swal.fire("Əla!", "Ismarıc uğurla göndərilmişdir!", "success");
+        Swal.fire(`${t("swal1")}`, `${t("swal2")}`, "success");
         setForm({
           name: '',
           phone: '',
@@ -84,10 +87,10 @@ const Contact = ({data}) => {
           <Container>
             <Breadcrumb className='absolute bottom-[10px] z-10 text-[#fff]' spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
               <BreadcrumbItem>
-                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>Home</Link></div>
+                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>{t("home")}</Link></div>
               </BreadcrumbItem>
               <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>Contact</BreadcrumbLink>
+                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>{t("contact")}</BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
           </Container>
@@ -99,7 +102,7 @@ const Contact = ({data}) => {
                 <div className="flex flex-col gap-[30px]">
                   <div className="flex items-center gap-[20px]">
                     <BiMap className="text-[30px]" /> 
-                    <h3 className="text-[20px]">{options?.unvan_az}</h3>
+                    <h3 className="text-[20px]">{ml(options?.unvan_az,options?.unvan_ru,options?.unvan_en)}</h3>
                   </div>
                   <div className="flex items-center gap-[20px]">
                     <BsTelephonePlus className="text-[30px]" /> 
@@ -118,7 +121,7 @@ const Contact = ({data}) => {
                         value={form.name} required
                         onChange={handleChange}
                         name='name'
-                       type="text" placeholder="Ad,Soyad" className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
+                       type="text" placeholder={t("namesurname")} className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
                     </div>
                     <div className="w-full mb-[30px]">
                       <input 
@@ -126,7 +129,7 @@ const Contact = ({data}) => {
                         onChange={handleChange}
                         name='phone'
                         type="text"
-                       placeholder="Nomre" className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
+                       placeholder={t("phone")} className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
                     </div>
                     <div className="w-full mb-[30px]">
                       <input 
@@ -134,19 +137,20 @@ const Contact = ({data}) => {
                       value={form.email} required
                       onChange={handleChange}
                       name='email'
-                      placeholder="Email" className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
+                      placeholder={t("email")} className="w-full p-[10px] outline-none text-[16px] text-[#000] border-1 border-black" />
                     </div>
                     <div className="w-full mb-[30px]">
                       <textarea
                         value={form.message} required
                         name="message"
                         onChange={handleChange}
-                      placeholder="Mesaj"  className="w-full p-[10px] outline-none text-[16px] resize-none h-[100px] text-[#000] border-1 border-black"></textarea>
+                      placeholder={t("messages")}  className="w-full p-[10px] outline-none text-[16px] resize-none h-[100px] text-[#000] border-1 border-black"></textarea>
                     </div>
                     <div className="w-full mb-[30px]">
-                      <button className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1  mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
-                      {loading ? <Sending /> : 'Göndər'}
-                      </button>
+                      <Button className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1  mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px]
+                       text-[#000] hover:text-[#fff] text-[17px] ">
+                      {loading ? <Sending /> : (t("send"))}
+                      </Button>
                     </div>
                 </form>
               </Col>

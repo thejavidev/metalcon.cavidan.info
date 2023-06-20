@@ -14,10 +14,12 @@ import {
   BreadcrumbLink,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
-import { line } from '../assets';
+import { useTranslation } from 'react-i18next';
+import { getMultiLang as ml } from '~/components/MultiLang';
+
 const Projects = ({ data }) => {
   const projects = data?.projects;
-
+  const [t] = useTranslation("translation");
   const imagePerRow = 4;
   const [next, setNext] = useState(imagePerRow);
   const handleMoreImage = () => {
@@ -39,10 +41,10 @@ const Projects = ({ data }) => {
           <Container>
             <Breadcrumb className='absolute bottom-[10px] z-10 text-[#fff]' spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
               <BreadcrumbItem>
-                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>Home</Link></div>
+                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>{t("home")}</Link></div>
               </BreadcrumbItem>
               <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>Projects</BreadcrumbLink>
+                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>{t("projects1")}</BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
           </Container>
@@ -57,15 +59,16 @@ const Projects = ({ data }) => {
                     <Link to={`/projects/${cur?.slug}`} className="w-full overflow-hidden relative project_box ">
                       <LazyLoadImage src={cur?.cover} className='w-full' />
                       <div className="text absolute opacity-[0] bottom-[-100px] w-full border-t-[1px] border-t-[#4A9CC2] pt-[10px] pb-[10px] pl-[20px] pr-[20px] z-30 transition">
-                        <h3 className='text-[#fff] font-[400]'>{cur?.name_az}</h3>
+                        <h3 className='text-[#fff] font-[400]'>{ml(cur?.name_az,cur?.name_ru,cur?.name_en)}</h3>
                       </div>
                     </Link>
                   </Col>
                 ))
               }
               {next < projects?.length && (
-                <Button onClick={handleMoreImage} className="bg-[#f3f3f3] max-w-max ml-3 border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
-                  more
+                <Button onClick={handleMoreImage} className="bg-[#ccc] max-w-max ml-3 border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] 
+                rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-[#000] text-[17px] hover:text-[#fff] ">
+                  {t("loadmore")}
                 </Button>
               )}
             </Row>

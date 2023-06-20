@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import { line } from '~/assets';
 import { getMultiLang as ml } from '~/components/MultiLang';
 import { useTranslation } from 'react-i18next';
+import Button from 'react-bootstrap/Button';
 
 const Home = ({ data }) => {
   const homebanner = data?.homebanner;
@@ -51,6 +52,18 @@ const Home = ({ data }) => {
                 <LazyLoadImage src={cur?.src} className='w-full h-[650px]' />
                 <div className="flex justify-center items-center flex-col top-0 h-full absolute w-full">
                   <div className='text-[#fff] text-center' dangerouslySetInnerHTML={{ __html: cur?.title_az && ml(cur?.title_az,cur?.title_ru,cur?.title_en) }}></div>
+                  <div className="flex items-center gap-6">
+                    <Button className='outline-none border-1 border-[#fff] capitalize '>
+                      <Link to={'/contact'}>
+                      {t("text1")}
+                      </Link>
+                    </Button>
+                    <Button className='outline-none border-1 border-[#fff] capitalize '>
+                      <Link to={'/about'}>
+                      {t("text2")}
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </SwiperSlide>
             ))
@@ -104,10 +117,10 @@ const Home = ({ data }) => {
                 <LazyLoadImage src={options?.src} />
               </Col>
               <Col lg={6} className='flex items-center  flex-col'>
-                <div className="w-full text-justify" dangerouslySetInnerHTML={{ __html: options?.text_az  }}></div>
+                <div className="w-full text-justify" dangerouslySetInnerHTML={{ __html: options?.text_az && ml(options?.text_az,options?.text_ru,options?.text_en)  }}></div>
                 <Link to={`/about`} className='w-full justify-end items-end flex mt-[10px]'>
                   <div className=' border-1 border-black pt-[10px] pb-[10px] pl-[20px] pr-[20px]'>
-                    Etrafli
+                    {t("loadmore")}
                   </div>
                 </Link>
               </Col>
@@ -119,7 +132,7 @@ const Home = ({ data }) => {
 
             <div className="w-full flex items-center mb-[30px]">
               <LazyLoadImage src={line} className='h-[2px] mr-[20px]' />
-              <h2 className='text-[20px] font-bold text-[#000] uppercase'>XÜSUSİYYƏTLƏR </h2>
+              <h2 className='text-[20px] font-bold text-[#000] uppercase'>{t("char")} </h2>
             </div>
             <Row className=''>
               {
@@ -131,8 +144,8 @@ const Home = ({ data }) => {
                         <LazyLoadImage src={cur?.cover_hover} className='onhover hidden' />
                       </div>
                       <div className="flex flex-col pl-[30px]">
-                        <h2 className='text-[25px] font-[600] text-[#00] '>{cur?.name_az}</h2>
-                        <div className='mt-[20px] text-justify' dangerouslySetInnerHTML={{ __html: cur?.text_az }}></div>
+                        <h2 className='text-[25px] font-[600] text-[#00] '>{ml(cur?.name_az,cur?.name_ru,cur?.name_en)}</h2>
+                        <div className='mt-[20px] text-justify' dangerouslySetInnerHTML={{ __html: cur?.text_az && ml(cur?.text_az,cur?.text_ru,cur?.text_en) }}></div>
                       </div>
                     </div>
                   </Col>
@@ -147,7 +160,7 @@ const Home = ({ data }) => {
           <Container>
             <div className="w-full flex items-center mb-[30px]">
               <LazyLoadImage src={line} className='h-[2px] mr-[20px]' />
-              <h2 className='text-[20px] font-bold text-[#000] uppercase'>LAYİHƏLƏRİMİZ </h2>
+              <h2 className='text-[20px] font-bold text-[#000] uppercase'>{t("projects")} </h2>
             </div>
             <Row className=''>
               {
@@ -156,14 +169,14 @@ const Home = ({ data }) => {
                     <Link to={`/projects/${cur?.slug}`} className="w-full overflow-hidden relative project_box ">
                       <LazyLoadImage src={cur?.cover} className='w-full' />
                       <div className="text absolute opacity-[0] bottom-[-100px] w-full border-t-[1px] border-t-[#4A9CC2] pt-[10px] pb-[10px] pl-[20px] pr-[20px] z-30 transition">
-                        <h3 className='text-[#fff] font-[400]'>{cur?.name_az}</h3>
+                        <h3 className='text-[#fff] font-[400]'>{ml(cur?.name_az,cur?.name_ru,cur?.name_en)}</h3>
                       </div>
                     </Link>
                   </Col>
                 ))
               }
                <Link to='/projects'  className="bg-[#f3f3f3] max-w-max ml-3 border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
-                  more
+               {t("loadmore")}
                 </Link>
             </Row>
           </Container>

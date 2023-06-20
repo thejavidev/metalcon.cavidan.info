@@ -12,8 +12,11 @@ import {
   BreadcrumbLink,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { getMultiLang as ml } from '~/components/MultiLang';
 
 const About = ({ data }) => {
+  const [t] = useTranslation("translation");
   const options = data?.about;
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -31,10 +34,10 @@ const About = ({ data }) => {
           <Container>
             <Breadcrumb className='absolute bottom-[10px] z-10 text-[#fff]' spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
               <BreadcrumbItem>
-                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>Home</Link></div>
+                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>{t("home")}</Link></div>
               </BreadcrumbItem>
               <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>About</BreadcrumbLink>
+                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>{t("about")}</BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
           </Container>
@@ -42,7 +45,7 @@ const About = ({ data }) => {
         <section id="about" className='pt-[50px] pb-[50px] '>
           <Container>
             <div className="w-full flex justify-end items-end  ">
-              <h2 className='text-[35px] font-bold text-[#3498db]'>Dəmirin <span className='text-[#000]'>Gücü</span></h2>
+              <h2 className='text-[35px] font-bold text-[#3498db]'>{t("iron")} <span className='text-[#000]'>{t("guc")}</span></h2>
             </div>
             
             <Row className='items-center'>
@@ -50,8 +53,7 @@ const About = ({ data }) => {
                 <LazyLoadImage src={options?.src} />
               </Col>
               <Col lg={6} className='flex items-center  flex-col'>
-                <div className="w-full text-justify" dangerouslySetInnerHTML={{ __html: options?.text_az }}></div>
-                
+                <div className="w-full text-justify" dangerouslySetInnerHTML={{ __html: options?.text_az && ml(options?.text_az,options?.text_ru,options?.text_en)  }}></div>
               </Col>
             </Row>
           </Container>

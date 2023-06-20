@@ -8,6 +8,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useParams } from 'react-router';
 import { LightgalleryItem } from "react-lightgallery";
+import { useTranslation } from 'react-i18next';
+import { getMultiLang as ml } from '~/components/MultiLang';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -16,6 +18,7 @@ import {
 import { Link } from 'react-router-dom';
 const ProjectsSingle = ({ data }) => {
   const { slug } = useParams();
+  const [t] = useTranslation("translation");
   const projects = data?.projects;
   const currentPost = projects?.find((post) => post?.slug === slug);
   const currentImages = currentPost?.images;
@@ -36,13 +39,13 @@ const ProjectsSingle = ({ data }) => {
           <Container>
             <Breadcrumb className='absolute bottom-[10px] z-10 text-[#fff]' spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
               <BreadcrumbItem>
-                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>Home</Link></div>
+                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>{t("home")}</Link></div>
               </BreadcrumbItem>
               <BreadcrumbItem>
-                <div className='font-[700] text-[16px] capitalize' ><Link to='/projects'>Projects</Link></div>
+                <div className='font-[700] text-[16px] capitalize' ><Link to='/projects'>{t("projects1")}</Link></div>
               </BreadcrumbItem>
               <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>{currentPost?.name_az}</BreadcrumbLink>
+                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>{ml(currentPost?.name_az,currentPost?.name_ru,currentPost?.name_en)}</BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
           </Container>
@@ -61,9 +64,6 @@ const ProjectsSingle = ({ data }) => {
                   </Col>
                 ))
               }
-              <Col lg={4}>
-
-              </Col>
             </Row>
           </Container>
         </section>

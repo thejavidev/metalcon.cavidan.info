@@ -4,10 +4,12 @@ import Col from 'react-bootstrap/Col';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { corn_logo, footer_bg, footer_logo } from '~/assets';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Footer = ({data}) => {
   const options = data?.about;
   const year =new Date().getFullYear();
+  const [t] = useTranslation("translation");
   return (
     <>
       <footer className='w-full relative footer_bg'   style={{
@@ -28,7 +30,7 @@ const Footer = ({data}) => {
                 <a href="https://corn.az" target='_blank'><LazyLoadImage src={corn_logo} /></a>
                 <div className=" flex items-center gap-3">
                   
-                  <p>Bütün hüquqlar qorunur </p>
+                  <p>{t("huquq")} </p>
                   {year} 
                 </div>
             </Col>

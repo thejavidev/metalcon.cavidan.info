@@ -5,7 +5,7 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import { useTranslation } from 'react-i18next';
 import { LightgalleryItem } from "react-lightgallery";
 import {
   Breadcrumb,
@@ -17,6 +17,7 @@ import { useEffect } from "react";
 
 const Certificate = ({ data }) => {
   const licency = data?.licency;
+  const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
@@ -33,10 +34,10 @@ const Certificate = ({ data }) => {
           <Container>
             <Breadcrumb className='absolute bottom-[10px] z-10 text-[#fff]' spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
               <BreadcrumbItem>
-                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>Home</Link></div>
+                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>{t("home")}</Link></div>
               </BreadcrumbItem>
               <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>Sertifikatlar</BreadcrumbLink>
+                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>{t("certificats")}</BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
           </Container>
