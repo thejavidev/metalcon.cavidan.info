@@ -16,6 +16,8 @@ import {
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getMultiLang as ml } from '~/components/MultiLang';
+import { Helmet } from 'react-helmet-async';
+
 
 const Projects = ({ data }) => {
   const projects = data?.projects;
@@ -30,6 +32,9 @@ const Projects = ({ data }) => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title >Metalcon - {t("projects1")}</title>
+      </Helmet>
       <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -59,16 +64,16 @@ const Projects = ({ data }) => {
                     <Link to={`/projects/${cur?.slug}`} className="w-full overflow-hidden relative project_box ">
                       <LazyLoadImage src={cur?.cover} className='w-full' />
                       <div className="text absolute opacity-[0] bottom-[-100px] w-full border-t-[1px] border-t-[#4A9CC2] pt-[10px] pb-[10px] pl-[20px] pr-[20px] z-30 transition">
-                        <h3 className='text-[#fff] font-[400]'>{ml(cur?.name_az,cur?.name_ru,cur?.name_en)}</h3>
+                        <h3 className='text-[#fff] font-[400]'>{ml(cur?.name_az, cur?.name_ru, cur?.name_en)}</h3>
                       </div>
                     </Link>
                   </Col>
                 ))
               }
-             
+
             </Row>
             <div className='mt-2'>
-            {next < projects?.length && (
+              {next < projects?.length && (
                 <Button onClick={handleMoreImage} className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] 
                 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-[#000] text-[17px] hover:text-[#fff] ">
                   {t("loadmore")}

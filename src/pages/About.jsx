@@ -14,7 +14,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getMultiLang as ml } from '~/components/MultiLang';
-
+import { Helmet } from 'react-helmet-async';
 
 
 const About = ({ data }) => {
@@ -26,6 +26,9 @@ const About = ({ data }) => {
 
   return (
     <>
+      <Helmet>
+        <title >Metalcon - {t("about")}</title>
+      </Helmet>
       <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -50,13 +53,13 @@ const About = ({ data }) => {
             <div className="w-full flex justify-end items-end  mb-4 md:items-center md:justify-start">
               <h2 className='text-[35px] lg:text-[25px] font-bold text-[#3498db]'>{t("iron")} <span className='text-[--text]'>{t("guc")}</span></h2>
             </div>
-            
+
             <Row className='items-center'>
               <Col lg={6}>
                 <LazyLoadImage src={options?.src} className='lg:w-full lg:mb-4' />
               </Col>
               <Col lg={6} className='flex items-center  flex-col'>
-                <div className="w-full text-justify text-[--text]" dangerouslySetInnerHTML={{ __html: options?.text_az && ml(options?.text_az,options?.text_ru,options?.text_en)  }}></div>
+                <div className="w-full text-justify text-[--text]" dangerouslySetInnerHTML={{ __html: options?.text_az && ml(options?.text_az, options?.text_ru, options?.text_en) }}></div>
               </Col>
             </Row>
           </Container>

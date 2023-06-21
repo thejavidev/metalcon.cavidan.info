@@ -16,6 +16,9 @@ import {
   BreadcrumbLink,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+
+
 const ProjectsSingle = ({ data }) => {
   const { slug } = useParams();
   const [t] = useTranslation("translation");
@@ -28,6 +31,9 @@ const ProjectsSingle = ({ data }) => {
 
   return (
     <>
+      <Helmet>
+        <title >Metalcon - {t("projects1")} - {ml(currentPost?.name_az, currentPost?.name_ru, currentPost?.name_en)}</title>
+      </Helmet>
       <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -45,7 +51,7 @@ const ProjectsSingle = ({ data }) => {
                 <div className='font-[700] text-[16px] capitalize' ><Link to='/projects'>{t("projects1")}</Link></div>
               </BreadcrumbItem>
               <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>{ml(currentPost?.name_az,currentPost?.name_ru,currentPost?.name_en)}</BreadcrumbLink>
+                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>{ml(currentPost?.name_az, currentPost?.name_ru, currentPost?.name_en)}</BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
           </Container>

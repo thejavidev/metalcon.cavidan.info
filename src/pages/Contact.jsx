@@ -21,14 +21,16 @@ import {
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from 'react-helmet-async';
 
-const Sending=()=>{
-  return(
+
+const Sending = () => {
+  return (
     <div class="loaderContact block mt-[10px] mb-[10px] w-[130px] h-[4px] rounded-[30px] relative bg-[--rgba3]"></div>
   )
 }
 
-const Contact = ({data}) => {
+const Contact = ({ data }) => {
   const options = data?.about;
   const formRef = useRef();
   const [t] = useTranslation("translation");
@@ -48,11 +50,11 @@ const Contact = ({data}) => {
     setLoading(true);
     emailjs.send('service_ifvxroq', 'template_pad4cel',
       {
-          to_name: form.name,
-          to_phone: form.phone,
-          to_email: form.email,
-          to_email: 'contact@metalcon.az',
-          message: form.message
+        to_name: form.name,
+        to_phone: form.phone,
+        to_email: form.email,
+        to_email: 'contact@metalcon.az',
+        message: form.message
       },
       'xeLUauh7KhJi8704j',
     )
@@ -76,6 +78,9 @@ const Contact = ({data}) => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title >Metalcon - {t("contact")}</title>
+      </Helmet>
       <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -101,63 +106,63 @@ const Contact = ({data}) => {
               <Col lg={3} className="lg:mt-[40px]">
                 <div className="flex flex-col flex-wrap lg:flex-row gap-[30px]">
                   <div className="flex items-center gap-[20px]">
-                    <BiMap className="text-[30px] lg:text-[20px] text-[--text]" /> 
-                    <h3 className="text-[20px] lg:text-[16px] text-[--text]">{ml(options?.unvan_az,options?.unvan_ru,options?.unvan_en)}</h3>
+                    <BiMap className="text-[30px] lg:text-[20px] text-[--text]" />
+                    <h3 className="text-[20px] lg:text-[16px] text-[--text]">{ml(options?.unvan_az, options?.unvan_ru, options?.unvan_en)}</h3>
                   </div>
                   <div className="flex items-center gap-[20px]">
-                    <BsTelephonePlus className="text-[30px] lg:text-[20px] text-[--text]" /> 
+                    <BsTelephonePlus className="text-[30px] lg:text-[20px] text-[--text]" />
                     <a className="text-[20px] lg:text-[16px] text-[--text]" href={`tel:${options?.tel2}`}>{options?.tel2}</a>
                   </div>
                   <div className="flex items-center gap-[20px]">
-                    <AiOutlineMail className="text-[30px] lg:text-[20px] text-[--text]" /> 
+                    <AiOutlineMail className="text-[30px] lg:text-[20px] text-[--text]" />
                     <a className="text-[20px] lg:text-[16px] text-[--text]" href={`mailto:${options?.email}`}>{options?.email}</a>
                   </div>
                 </div>
               </Col>
               <Col lg={5} className="order-[-2]">
                 <form className="w-full" onSubmit={handleSubmit} ref={formRef}>
-                    <div className="w-full mb-[30px]">
-                      <input
-                        value={form.name} required
-                        onChange={handleChange}
-                        name='name'
-                       type="text" placeholder={t("namesurname")} className="w-full p-[10px] bg-[--bg] outline-none text-[16px] text-[--text] border-1 border-[--text2]" />
-                    </div>
-                    <div className="w-full mb-[30px]">
-                      <input 
-                        value={form.phone} required
-                        onChange={handleChange}
-                        name='phone'
-                        type="text"
-                       placeholder={t("phone")} className="w-full p-[10px] bg-[--bg] outline-none text-[16px] text-[--text] border-1 border-[--text2]" />
-                    </div>
-                    <div className="w-full mb-[30px]">
-                      <input 
-                      type="text" 
+                  <div className="w-full mb-[30px]">
+                    <input
+                      value={form.name} required
+                      onChange={handleChange}
+                      name='name'
+                      type="text" placeholder={t("namesurname")} className="w-full p-[10px] bg-[--bg] outline-none text-[16px] text-[--text] border-1 border-[--text2]" />
+                  </div>
+                  <div className="w-full mb-[30px]">
+                    <input
+                      value={form.phone} required
+                      onChange={handleChange}
+                      name='phone'
+                      type="text"
+                      placeholder={t("phone")} className="w-full p-[10px] bg-[--bg] outline-none text-[16px] text-[--text] border-1 border-[--text2]" />
+                  </div>
+                  <div className="w-full mb-[30px]">
+                    <input
+                      type="text"
                       value={form.email} required
                       onChange={handleChange}
                       name='email'
                       placeholder={t("email")} className="w-full p-[10px] bg-[--bg] outline-none text-[16px] text-[--text] border-1 border-[--text2]" />
-                    </div>
-                    <div className="w-full mb-[30px]">
-                      <textarea
-                        value={form.message} required
-                        name="message"
-                        onChange={handleChange}
-                      placeholder={t("messages")}  className="w-full p-[10px] bg-[--bg] outline-none text-[16px] resize-none h-[100px] text-[--text] border-1 border-[--text2]"></textarea>
-                    </div>
-                    <div className="w-full mb-[30px]">
-                      <Button className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1  mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px]
+                  </div>
+                  <div className="w-full mb-[30px]">
+                    <textarea
+                      value={form.message} required
+                      name="message"
+                      onChange={handleChange}
+                      placeholder={t("messages")} className="w-full p-[10px] bg-[--bg] outline-none text-[16px] resize-none h-[100px] text-[--text] border-1 border-[--text2]"></textarea>
+                  </div>
+                  <div className="w-full mb-[30px]">
+                    <Button className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1  mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px]
                        text-[#000] hover:text-[#fff] text-[17px] ">
                       {loading ? <Sending /> : (t("send"))}
-                      </Button>
-                    </div>
+                    </Button>
+                  </div>
                 </form>
               </Col>
               <Col lg={4} className="order-[-1]">
-              <AspectRatio ratio={16 / 9} className=" h-[330px]">
-                <iframe src={options?.unvan_map}/>
-              </AspectRatio>
+                <AspectRatio ratio={16 / 9} className=" h-[330px]">
+                  <iframe src={options?.unvan_map} />
+                </AspectRatio>
               </Col>
             </Row>
           </Container>

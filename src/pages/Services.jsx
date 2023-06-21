@@ -25,6 +25,7 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 import { Link, NavLink, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getMultiLang as ml } from '~/components/MultiLang';
+import { Helmet } from 'react-helmet-async';
 
 const Services = ({ data }) => {
   const services = data?.services;
@@ -38,6 +39,9 @@ const Services = ({ data }) => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title >Metalcon - {t("xidmet")}</title>
+      </Helmet>
       <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -65,30 +69,30 @@ const Services = ({ data }) => {
                 slidesPerView={4}
                 breakpoints={{
                   40: {
-                      slidesPerView: 1,
-      
+                    slidesPerView: 1,
+
                   },
                   340: {
-                      slidesPerView: 1,
+                    slidesPerView: 1,
                   },
                   640: {
-                      slidesPerView: 2,
-      
+                    slidesPerView: 2,
+
                   },
                   768: {
-                      slidesPerView: 2,
-      
+                    slidesPerView: 2,
+
                   },
                   1024: {
-                      slidesPerView: 3,
+                    slidesPerView: 3,
                   },
                   1399: {
-                      slidesPerView: 4,
+                    slidesPerView: 4,
                   },
                   1499: {
-                      slidesPerView: 4,
+                    slidesPerView: 4,
                   },
-              }}
+                }}
                 className="mySwiper w-full"
               >
                 {
@@ -102,7 +106,7 @@ const Services = ({ data }) => {
                               <LazyLoadImage src={cur?.cover_hover} className='w-full h-[70px] current onhover hidden' />
                             </div>
                             <div className='font-[700] text-[16px] uppercase text-[#fff] pt-[20px] mb-[10px] pl-[0] pr-[0]'
-                             dangerouslySetInnerHTML={{ __html: cur?.name_az && ml(cur?.name_az,cur?.name_ru,cur?.name_en) }}></div>
+                              dangerouslySetInnerHTML={{ __html: cur?.name_az && ml(cur?.name_az, cur?.name_ru, cur?.name_en) }}></div>
                             <span className='bg-[#4A9CC2] w-[80px] h-[2px] block ' />
                             <div className='aidv border-1 border-white rounded-full p-[5px]'>
                               <AiOutlineRight className='text-[#fff] ai' />
@@ -127,7 +131,7 @@ const Services = ({ data }) => {
                     <TabPanel key={i}>
                       <Row className='items-center'>
                         <Col lg={5} className='flex justify-center items-center h-full lg:items-start lg:justify-start lg:mb-5'>
-                          <div className='services-list' dangerouslySetInnerHTML={{ __html: currentPost?.text2_az && ml(currentPost?.text2_az,currentPost?.text2_ru,currentPost?.text2_en) }}></div>
+                          <div className='services-list' dangerouslySetInnerHTML={{ __html: currentPost?.text2_az && ml(currentPost?.text2_az, currentPost?.text2_ru, currentPost?.text2_en) }}></div>
 
                         </Col>
                         <Col lg={7} md={12}>
@@ -158,30 +162,30 @@ const Services = ({ data }) => {
                             className="mySwiper mb-4"
                             breakpoints={{
                               40: {
-                                  slidesPerView: 2,
-                  
+                                slidesPerView: 2,
+
                               },
                               340: {
-                                  slidesPerView: 2,
+                                slidesPerView: 2,
                               },
                               640: {
-                                  slidesPerView: 2,
-                  
+                                slidesPerView: 2,
+
                               },
                               768: {
-                                  slidesPerView: 2,
-                  
+                                slidesPerView: 2,
+
                               },
                               1024: {
-                                  slidesPerView: 3,
+                                slidesPerView: 3,
                               },
                               1399: {
-                                  slidesPerView: 4,
+                                slidesPerView: 4,
                               },
                               1499: {
-                                  slidesPerView: 4,
+                                slidesPerView: 4,
                               },
-                          }}
+                            }}
                           >
                             <div className=" w-full">
 

@@ -7,7 +7,7 @@ import "swiper/css";
 import Loader from "./components/loader/Loader";
 import "lightgallery.js/dist/css/lightgallery.css";
 import { createContext } from "react";
-
+import $ from 'jquery';
 export const ThemeContext = createContext(null);
 function App() {
 
@@ -19,20 +19,18 @@ function App() {
     setLoading(true)
     dispatch(loadposts())
     setTimeout(() => {
-      setLoading(false)
-    }, 500);
+      $(".sitelaoder").addClass("hid")
+    }, 3000);
   }, [dispatch])
 
 
 
   return (
     <>
-      {
-        loading ? <Loader /> :
-          <Layout data={data}>
-            <Router data={data} />
-          </Layout>
-      }
+      <Loader />
+      <Layout data={data}>
+        <Router data={data} />
+      </Layout>
 
     </>
   )

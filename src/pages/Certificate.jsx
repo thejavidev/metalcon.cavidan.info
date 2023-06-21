@@ -14,6 +14,8 @@ import {
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import { useEffect } from "react";
+import { Helmet } from 'react-helmet-async';
+
 
 const Certificate = ({ data }) => {
   const licency = data?.licency;
@@ -23,6 +25,9 @@ const Certificate = ({ data }) => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title >Metalcon - {t("certificats")}</title>
+      </Helmet>
       <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
