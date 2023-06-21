@@ -26,7 +26,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Sending = () => {
   return (
-    <div class="loaderContact block mt-[10px] mb-[10px] w-[130px] h-[4px] rounded-[30px] relative bg-[--rgba3]"></div>
+    <div className="loaderContact block mt-[10px] mb-[10px] w-[130px] h-[4px] rounded-[30px] relative bg-[--rgba3]"></div>
   )
 }
 
@@ -152,7 +152,7 @@ const Contact = ({ data }) => {
                       placeholder={t("messages")} className="w-full p-[10px] bg-[--bg] outline-none text-[16px] resize-none h-[100px] text-[--text] border-1 border-[--text2]"></textarea>
                   </div>
                   <div className="w-full mb-[30px]">
-                    <Button className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1  mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px]
+                    <Button type="submit"  className="bg-[#ccc] max-w-max  border-none capitalize outline-none shadow1  mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px]
                        text-[#000] hover:text-[#fff] text-[17px] ">
                       {loading ? <Sending /> : (t("send"))}
                     </Button>
