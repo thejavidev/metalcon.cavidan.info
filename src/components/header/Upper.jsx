@@ -5,7 +5,11 @@ import React, { useEffect } from 'react';
 const Upper =React.memo(({toggle, switchLang})=>{
 
     useEffect(()=>{
-        if(localStorage.getItem("i18nextLng") ==='tr-TR' || localStorage.getItem("i18nextLng") ==='TR-TR' || localStorage.getItem("i18nextLng") ==='TR' || localStorage.getItem("i18nextLng") ==='tr' ){
+        if(
+            localStorage.getItem("i18nextLng") ==='tr-TR' 
+        || localStorage.getItem("i18nextLng") ==='TR-TR' 
+        || localStorage.getItem("i18nextLng") ==='TR' 
+        || localStorage.getItem("i18nextLng") ==='tr'){
             localStorage.setItem('i18nextLng', 'az');
         }
         if(localStorage.getItem("i18nextLng") ==='ru-RU'){

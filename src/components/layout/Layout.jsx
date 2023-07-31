@@ -1,26 +1,30 @@
-import React from 'react'
-import Header from '../header/Header'
-import Footer from '../footer/Footer';
-import { AnimatePresence } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
+import { Helmet } from "react-helmet-async";
+import { AnimatePresence } from "framer-motion";
 
-const Layout = ({ data, children }) => {
-  const [t] = useTranslation("translation");
-  const sitelang =localStorage.getItem("i18nextLng");
+const Layout = ({ children }) => {
   return (
     <>
       <Helmet>
-        <html lang={sitelang} />
-        <title >Metalcon - {t("home")}</title>
+        <title>Metalcon Ana Sehife</title>
+        <meta
+          name="description"
+          content="Author: A.N. Author, Illustrator: P. Picture, Category: Books, Price:  £9.24, Length: 784 pages"
+        />
+        <meta
+          name="google-site-verification"
+          content="+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34="
+        />
+        <meta name="robots" content="noindex,nofollow" />
       </Helmet>
-      <Header data={data} />
-      <AnimatePresence >
-        {children}
-      </AnimatePresence>
-      <Footer data={data} />
-    </>
-  )
-}
+      <Header />
+      <AnimatePresence>{children}</AnimatePresence>
 
-export default Layout
+      <Footer />
+    </>
+  );
+};
+
+export default Layout;

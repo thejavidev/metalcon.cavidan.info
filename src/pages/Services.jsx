@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion as m } from "framer-motion";
+
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { breadcump } from '~/assets';
 import { ChevronRightIcon } from '@chakra-ui/icons';
@@ -23,40 +23,31 @@ import {
 } from '@chakra-ui/react'
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { Link, NavLink, useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { getMultiLang as ml } from '~/components/MultiLang';
-import { Helmet } from 'react-helmet-async';
+
+
+import { myservices } from '../components/fadedata/fakedata';
 
 const Services = ({ data }) => {
-  const services = data?.services;
-  const [t] = useTranslation("translation");
   const { slug } = useParams();
-  const currentPost = services?.find((post) => post?.slug === slug);
+  const currentPost = myservices?.find((post) => post?.slug === slug);
   const currentImages = currentPost?.images;
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, []);
+ 
   return (
     <>
-      <Helmet>
-        <title >Metalcon - {t("xidmet")}</title>
-      </Helmet>
-      <m.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.85, ease: "easeOut" }}
+     
+      <div
+       
       >
         <div className='relative w-full p-[0] m-[0] h-[35vh] breadcump'>
           <LazyLoadImage src={breadcump} className='w-full h-full' />
           <Container>
             <Breadcrumb className='absolute bottom-[10px] z-10 text-[#fff]' spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
               <BreadcrumbItem>
-                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>{t("home")}</Link></div>
+                <div className='font-[700] text-[16px] capitalize' ><Link to='/'>ana sehife</Link></div>
               </BreadcrumbItem>
               <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>{t("xidmet")}</BreadcrumbLink>
+                <BreadcrumbLink className='font-[200] text-[16px] capitalize' href='#'>services</BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
           </Container>
@@ -96,17 +87,17 @@ const Services = ({ data }) => {
                 className="mySwiper w-full"
               >
                 {
-                  services && services?.map((cur, i) => (
+                  myservices && myservices?.map((cur, i) => (
                     <SwiperSlide key={i} className='services'>
                       <Tab className='w-full h-full' >
                         <NavLink className='w-full h-[250px] relative  servicesa p-[30px] ' to={`/services/${cur?.slug}`}>
                           <div className="flex justify-between items-center flex-col h-full w-full">
                             <div className="">
-                              <LazyLoadImage src={cur?.cover} className='w-full h-[70px] current' />
-                              <LazyLoadImage src={cur?.cover_hover} className='w-full h-[70px] current onhover hidden' />
+                              <LazyLoadImage src={cur?.imgBlue} className='w-full h-[70px] current' />
+                              <LazyLoadImage src={cur?.imgWhite} className='w-full h-[70px] current onhover hidden' />
                             </div>
                             <div className='font-[700] text-[16px] uppercase text-[#fff] pt-[20px] mb-[10px] pl-[0] pr-[0]'
-                              dangerouslySetInnerHTML={{ __html: cur?.name_az && ml(cur?.name_az, cur?.name_ru, cur?.name_en) }}></div>
+                              >{cur?.name}</div>
                             <span className='bg-[#4A9CC2] w-[80px] h-[2px] block ' />
                             <div className='aidv border-1 border-white rounded-full p-[5px]'>
                               <AiOutlineRight className='text-[#fff] ai' />
@@ -119,20 +110,18 @@ const Services = ({ data }) => {
                     </SwiperSlide>
                   ))
                 }
-
-
               </Swiper>
             </TabList>
             <TabPanels className='pl-[100px] pr-[100px] lg:pl-[20px] lg:pr-[20px] pt-[50px] pb-[50px]'>
               {
-                services && services?.map((item, i) => {
+                myservices && myservices?.map((item, i) => {
 
                   return (
                     <TabPanel key={i}>
                       <Row className='items-center'>
-                        <Col lg={5} className='flex justify-center items-center h-full lg:items-start lg:justify-start lg:mb-5'>
-                          <div className='services-list' dangerouslySetInnerHTML={{ __html: currentPost?.text2_az && ml(currentPost?.text2_az, currentPost?.text2_ru, currentPost?.text2_en) }}></div>
-
+                        <Col lg={5} className='flex flex-col justify-center items-center h-full lg:items-start lg:justify-start lg:mb-5'>
+                          <div className='services-list' >{item?.name}</div>
+                          <div className='services-list' >{item?.title}</div>
                         </Col>
                         <Col lg={7} md={12}>
                           <Swiper
@@ -214,7 +203,7 @@ const Services = ({ data }) => {
           </Tabs>
 
         </section>
-      </m.div>
+      </div>
     </>
   )
 }

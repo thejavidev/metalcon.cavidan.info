@@ -1,39 +1,46 @@
-import { useDispatch, useSelector } from "react-redux"
-import Layout from "./components/layout/Layout"
-import Router from "./components/router/Router"
+import Layout from "./components/layout/Layout";
+import Router from "./components/router/Router";
 import { useEffect, useState } from "react";
-import { loadposts } from "./components/store/posts";
 import "swiper/css";
 import Loader from "./components/loader/Loader";
 import "lightgallery.js/dist/css/lightgallery.css";
 import { createContext } from "react";
-import $ from 'jquery';
+import $ from "jquery";
 export const ThemeContext = createContext(null);
-function App() {
+import { atom, useRecoilState } from "recoil";
 
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false)
-  const data = useSelector((state) => state.list)
+const repoApi = atom({
+  key: "api",
+  default: [],
+});
+
+function App() {
+  const [api, setApi] = useRecoilState(repoApi);
 
   useEffect(() => {
-    setLoading(true)
-    dispatch(loadposts())
     setTimeout(() => {
-      $(".sitelaoder").addClass("hid")
-    }, 3000);
-  }, [dispatch])
+      $(".sitelaoder").addClass("hid");
+    }, 500);
 
+    const get_api = async () => {
+      const url = "https://metalcon.az/api/fulldata";
+      const res = await fetch(url);
+      const body = await res.json();
+      setApi(body);
+    };
+    get_api();
+  }, []);
 
+  console.log(api);
 
   return (
     <>
       <Loader />
-      <Layout data={data}>
-        <Router data={data} />
+      <Layout>
+        <Router />
       </Layout>
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;

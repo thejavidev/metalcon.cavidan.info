@@ -6,10 +6,8 @@ import { corn_logo, footer_bg, footer_logo } from '~/assets';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const Footer = ({data}) => {
-  const options = data?.about;
-  const year =new Date().getFullYear();
-  const [t] = useTranslation("translation");
+const Footer = () => {
+
   return (
     <>
       <footer className='w-full relative footer_bg'   style={{
@@ -18,8 +16,8 @@ const Footer = ({data}) => {
        
         <Row className=" w-full m-0   bg-[--rgba1] text-[#fff] p-[70px] md:p-[20px]">
            <div className="flex items-center justify-center">
-           <a className='text-center text-[#fff]' href={`tel:${options?.tel1}`}>{options?.tel1}</a> <span className='ml-[10px] mr-[10px]'> / </span>
-            <a className='text-[#fff]' href={`mailto:${options?.email}`}>{options?.email}</a>
+           <a className='text-center text-[#fff]' href=''>test</a> <span className='ml-[10px] mr-[10px]'> / </span>
+            <a className='text-[#fff]' href=''>test</a>
            </div>
         </Row>
         <Row className="w-full m-0 justify-between bg-[--rgba2] text-[#fff] pt-[20px] pb-[20px] pl-[50px] pr-[50px] md:pl-[20px] md:pr-[20px] md:flex-col">
@@ -30,8 +28,8 @@ const Footer = ({data}) => {
                 <a href="https://corn.az" target='_blank'><LazyLoadImage src={corn_logo} className='md:h-[20px]' /></a>
                 <div className=" flex items-center gap-3">
                   
-                  <p className='md:text-[14px]'>{t("huquq")} </p>
-                  {year} 
+                  <p className='md:text-[14px]'>Lorem ipsum dolor, sit amet. </p>
+                 
                 </div>
             </Col>
         </Row>
